@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pisupati Rama Sridhrut – Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="#hero">RS</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-name">Pisupati Rama Sridhrut</h1>
+      <h2 class="hero-role">Electrical Engineer | Game Developer | Robotics Engineer</h2>
+      <p class="hero-tagline">
+        I build fun, memorable and enjoyable games.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects">View My Work</a>
+        <a class="btn btn-outline" href="#contact">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-graphic" aria-hidden="true">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section about" id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-image">
+          <div class="avatar-placeholder" aria-label="Profile photo placeholder">
+            <i class="fa-solid fa-user"></i>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>
+            Hello! I'm <strong>Pisupati Rama Sridhrut</strong>, a passionate game developer
+            with a love for crafting elegant and very strong narrative games. I
+            enjoy working across all the aspects of game development, from designing engaging and innovative gameplay mechanics to creating soulful music.
+          </p>
+          <p>
+            When I'm not coding, you'll find me exploring new technologies,
+            creating art and stories, and producing music.
+          </p>
+          <a class="btn btn-primary" href="#contact">Let's Connect</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fa-brands fa-python skill-icon" aria-hidden="true"></i>
+          <span>Python</span>
+        </div>
+        <div class="skill-card">
+          <i class="fa-solid fa-gamepad skill-icon" aria-hidden="true"></i>
+          <span>Godot Game Engine</span>
+        </div>
+        <div class="skill-card">
+          <i class="fa-solid fa-cube skill-icon" aria-hidden="true"></i>
+          <span>Unity Engine</span>
+        </div>
+        <div class="skill-card">
+          <i class="fa-solid fa-shield-halved skill-icon" aria-hidden="true"></i>
+          <span>Unreal Engine</span>
+        </div>
+        <div class="skill-card">
+          <i class="fa-solid fa-music skill-icon" aria-hidden="true"></i>
+          <span>FL studio</span>
+        </div>
+        <div class="skill-card">
+          <i class="fa-solid fa-chart-line skill-icon" aria-hidden="true"></i>
+          <span>MATLAB/Simulink</span>
+        </div>
+        <div class="skill-card">
+          <i class="fa-brands fa-github skill-icon" aria-hidden="true"></i>
+          <span>Github</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      
+      <!-- Featured Projects -->
+      <div class="featured-projects">
+        <article class="featured-project-card">
+          <div class="featured-video-container">
+            <video class="featured-video" controls autoplay muted loop>
+              <source src="https://via.placeholder.com/1200x500?text=Game+Trailer+1" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="featured-project-header">
+            <h3>Featured Project One</h3>
+            <div class="project-links">
+              <a href="#" aria-label="View source code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <p>
+            A comprehensive game development project showcasing advanced mechanics,
+            rich storytelling, and immersive gameplay. Built with cutting-edge
+            technology and optimized for performance across multiple platforms.
+          </p>
+          <ul class="project-tags">
+            <li>Godot</li><li>GDScript</li><li>Game Design</li>
+          </ul>
+        </article>
+
+        <article class="featured-project-card">
+          <div class="featured-video-container">
+            <video class="featured-video" controls autoplay muted loop>
+              <source src="https://via.placeholder.com/1200x500?text=Game+Trailer+2" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="featured-project-header">
+            <h3>Featured Project Two</h3>
+            <div class="project-links">
+              <a href="#" aria-label="View source code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <p>
+            An innovative interactive experience combining game development with
+            multimedia elements. Features real-time rendering, dynamic storytelling,
+            and seamless user interactions.
+          </p>
+          <ul class="project-tags">
+            <li>Unity</li><li>C#</li><li>3D Graphics</li>
+          </ul>
+        </article>
+
+        <article class="featured-project-card">
+          <div class="featured-video-container">
+            <video class="featured-video" controls autoplay muted loop>
+              <source src="https://via.placeholder.com/1200x500?text=Game+Trailer+3" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="featured-project-header">
+            <h3>Featured Project Three</h3>
+            <div class="project-links">
+              <a href="#" aria-label="View source code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <p>
+            A creative project that blends artistic vision with technical excellence.
+            Delivers an unforgettable experience with polished mechanics, stunning
+            visuals, and engaging gameplay progression.
+          </p>
+          <ul class="project-tags">
+            <li>Unreal Engine</li><li>C++</li><li>Game Design</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Other Projects -->
+      <h3 class="subsection-title">Other Projects</h3>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+            <div class="project-links">
+              <a href="#" aria-label="View source code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Project One</h3>
+          <p>
+            A web application that demonstrates full‑stack development skills,
+            featuring a RESTful API, database integration, and a responsive
+            front‑end interface.
+          </p>
+          <ul class="project-tags">
+            <li>React</li><li>Node.js</li><li>MongoDB</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+            <div class="project-links">
+              <a href="#" aria-label="View source code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Project Two</h3>
+          <p>
+            An e‑commerce platform with secure payment processing, product
+            catalogue management, and an admin dashboard for order tracking.
+          </p>
+          <ul class="project-tags">
+            <li>Python</li><li>Django</li><li>PostgreSQL</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+            <div class="project-links">
+              <a href="#" aria-label="View source code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Project Three</h3>
+          <p>
+            A real‑time chat application using WebSockets, with user
+            authentication, private messaging, and persistent chat history.
+          </p>
+          <ul class="project-tags">
+            <li>JavaScript</li><li>Socket.io</li><li>Express</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+            <div class="project-links">
+              <a href="#" aria-label="View source code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Project Four</h3>
+          <p>
+            A music production tool with intuitive interface and powerful audio
+            processing features. Supports multi-track recording and real-time effects.
+          </p>
+          <ul class="project-tags">
+            <li>FL Studio</li><li>Audio Engineering</li><li>Production</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+            <div class="project-links">
+              <a href="#" aria-label="View source code"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="View live demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Project Five</h3>
+          <p>
+            An IoT sensor network monitoring system with Arduino microcontrollers.
+            Real-time data visualization and cloud integration for remote monitoring.
+          </p>
+          <ul class="project-tags">
+            <li>Arduino</li><li>IoT</li><li>Python</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-subtitle">
+        Have a project in mind or just want to say hello? My inbox is always
+        open.
+      </p>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Your message…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
+      </form>
+      <div class="social-links">
+        <a href="https://github.com/RamaSridhrut570" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Designed &amp; Built by <strong>Rama Sridhrut</strong></p>
+    <p class="footer-copy">&copy; <span id="year"></span> All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
