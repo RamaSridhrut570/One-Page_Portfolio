@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pisupati Rama Sridhrut | Ethereal Portfolio</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            /* Ethereal Blue Palette */
+            --bg-deep: #02040a;
+            --bg-mid: #061024;
+            --bg-highlight: #0d1b3e;
+            
+            --accent-cyan: #00f0ff;
+            --accent-blue: #0077b6;
+            --accent-glow: #90e0ef;
+            
+            --text-main: #e0fbfc;
+            --text-muted: #8ab4f8;
+            
+            /* Fonts */
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Alegreya', serif;
+
+            /* Cursor Tracking */
+            --mouse-x: 50vw;
+            --mouse-y: 50vh;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at top right, rgba(0, 119, 182, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom left, rgba(13, 27, 62, 0.5) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
+            background-attachment: fixed;
+            overflow: hidden; /* Prevent body scroll, wrapper handles it */
+            line-height: 1.6;
+            font-size: 1.125rem;
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-cyan);
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--accent-blue);
+            transition: width 0.2s, height 0.2s;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-cyan);
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.5), inset 0 0 8px rgba(0, 240, 255, 0.3);
+            transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+
+        h1, h2, h3, h4, .heading-font {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: clamp(1rem, 2vh, 1.5rem) 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(180deg, rgba(2, 4, 10, 0.9) 0%, transparent 100%);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+            position: relative;
+        }
+
+        /* Open To Roles Badge */
+        .nav-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
+        }
+
+        .nav-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 8px var(--accent-cyan);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* --- Scroll Snapping Architecture --- */
+        .snap-wrapper {
+            height: 100vh;
+            width: 100vw;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none; 
+        }
+        .snap-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .snap-section {
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Top padding clears the nav, bottom provides breathing room */
+            padding: 80px 5vw 2vh 5vw; 
+        }
+
+        /* --- Global Card Panel Design --- */
+        .card-panel {
+            width: 100%;
+            max-width: 1400px;
+            height: 82vh; /* Fixed uniform size for all cards */
+            max-height: 850px; 
+            background: rgba(6, 16, 36, 0.5);
+            border: 1px solid rgba(0, 119, 182, 0.3);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            /* Tighter internal padding so content doesn't overflow */
+            padding: clamp(1.5rem, 3vh, 3rem) clamp(2rem, 5vw, 4rem);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden; /* Strict no-scroll inside cards */
+            
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .card-panel.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .card-panel:hover {
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+
+        /* --- Section Shared Elements --- */
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vh, 2.5rem);
+            margin-bottom: clamp(1rem, 2vh, 2rem);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: var(--text-main);
+            flex-shrink: 0;
+        }
+
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(0, 240, 255, 0.3), transparent);
+        }
+
+        /* --- Hero Card --- */
+        .hero-subtitle {
+            color: var(--accent-cyan);
+            font-size: clamp(0.9rem, 1.8vh, 1.1rem);
+            margin-bottom: clamp(0.5rem, 1vh, 1rem);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-subtitle::before {
+            content: '';
+            display: block;
+            height: 2px; width: 40px;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .hero-name {
+            font-size: clamp(2.2rem, 5.5vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: clamp(0.5rem, 1vh, 1rem);
+            background: linear-gradient(to right, #ffffff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-role {
+            font-size: clamp(1rem, 2.2vw, 1.8rem);
+            color: var(--text-muted);
+            margin-bottom: clamp(0.8rem, 1.5vh, 1.5rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-desc {
+            max-width: 700px;
+            font-size: clamp(1rem, 1.8vh, 1.2rem);
+            color: var(--text-muted);
+            margin-bottom: clamp(1.5rem, 3vh, 3rem);
+            font-style: italic;
+        }
+
+        .cta-container { display: flex; gap: 1.5rem; }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: clamp(0.8rem, 1.5vh, 1rem) 2.5rem;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-cyan);
+            font-family: var(--font-heading);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: rgba(0, 119, 182, 0.05);
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-btn:hover {
+            background: rgba(0, 119, 182, 0.2); color: #fff;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(0, 119, 182, 0.3);
+        }
+        .cta-btn:hover::before { left: 100%; }
+
+        /* --- About Card --- */
+        .about-text {
+            max-width: 900px;
+            font-size: clamp(1rem, 1.8vh, 1.25rem);
+            color: var(--text-muted);
+            border-left: 2px solid var(--accent-blue);
+            padding-left: 1.5rem;
+            line-height: 1.7;
+        }
+        .about-text p { margin-bottom: clamp(0.8rem, 1.5vh, 1.5rem); }
+
+        /* --- Skills Card --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 2vh, 2rem);
+            margin-top: clamp(0.5rem, 1vh, 1rem);
+        }
+        .info-block {
+            background: rgba(0, 119, 182, 0.05);
+            padding: clamp(1rem, 2vh, 1.8rem);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 12px;
+        }
+        .info-block h3 {
+            color: var(--accent-cyan);
+            font-size: clamp(1rem, 1.8vh, 1.2rem);
+            margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .info-block p {
+            color: var(--text-muted);
+            font-size: clamp(0.9rem, 1.5vh, 1.1rem);
+            font-style: italic;
+        }
+
+        /* --- Individual Project Cards --- */
+        .project-card {
+            padding: 0; /* Handled by internal content */
+        }
+
+        .project-video-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.15;
+            transition: opacity 0.6s, transform 1s;
+            filter: grayscale(80%) sepia(20%) hue-rotate(180deg) brightness(0.8);
+        }
+
+        .project-card:hover .project-video-bg {
+            opacity: 0.4;
+            transform: scale(1.05);
+            filter: grayscale(20%) sepia(0) hue-rotate(180deg) brightness(1);
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(0deg, rgba(2,4,10,0.95) 0%, rgba(2,4,10,0.7) 40%, transparent 100%);
+            padding: clamp(1.5rem, 3vh, 3rem) clamp(2rem, 5vw, 4rem);
+            margin-top: auto; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .project-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: clamp(0.5rem, 1vh, 1rem);
+        }
+
+        .project-tags {
+            font-size: clamp(0.8rem, 1.4vh, 1rem);
+            color: var(--accent-cyan);
+            font-family: var(--font-heading);
+            letter-spacing: 0.05em;
+        }
+
+        .project-links a {
+            color: var(--text-muted);
+            margin-left: 1rem;
+            font-size: clamp(1.1rem, 2vh, 1.5rem);
+            transition: color 0.3s;
+        }
+        .project-links a:hover { color: var(--accent-cyan); }
+
+        .project-title { 
+            font-size: clamp(1.8rem, 4vh, 2.8rem); 
+            margin-bottom: clamp(0.5rem, 1vh, 1rem); 
+            color: var(--text-main); 
+        }
+        .project-desc { 
+            color: var(--text-muted); 
+            font-size: clamp(0.95rem, 1.6vh, 1.2rem); 
+            max-width: 800px; 
+        }
+
+        /* --- Other Projects Card --- */
+        .other-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: clamp(0.8rem, 1.5vh, 1.8rem);
+            margin-top: clamp(0.5rem, 1vh, 1rem);
+        }
+        .other-card {
+            background: rgba(6, 16, 36, 0.4);
+            border: 1px solid rgba(0, 119, 182, 0.2);
+            padding: clamp(1rem, 1.8vh, 1.8rem);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        .other-card:hover {
+            background: rgba(13, 27, 62, 0.6);
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+        .other-card i.fa-folder-open { color: var(--accent-blue); font-size: clamp(1.2rem, 2.5vh, 1.8rem); margin-bottom: clamp(0.4rem, 1vh, 0.8rem); display: block; }
+        .other-card h3 { font-size: clamp(1.1rem, 2vh, 1.3rem); margin-bottom: 0.4rem; }
+        .other-card p { color: var(--text-muted); font-size: clamp(0.85rem, 1.4vh, 0.95rem); margin-bottom: clamp(0.4rem, 1vh, 1rem); line-height: 1.4; }
+
+        /* --- Contact Card --- */
+        .contact-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 3vw, 3rem);
+            height: 100%;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-info p {
+            color: var(--text-muted); 
+            font-size: clamp(0.95rem, 1.6vh, 1.15rem); 
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: clamp(1rem, 1.8vh, 2rem);
+        }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 1.5vw, 1.5rem); }
+        .form-group { position: relative; }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%; background: transparent; border: none;
+            border-bottom: 1px solid var(--accent-blue);
+            color: var(--text-main); font-family: var(--font-body);
+            font-size: clamp(0.95rem, 1.6vh, 1.1rem); padding: 0.4rem 0;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none; border-bottom-color: var(--accent-cyan);
+            box-shadow: 0 5px 10px -5px rgba(0, 240, 255, 0.3);
+        }
+
+        .contact-form label {
+            font-family: var(--font-heading); color: var(--accent-cyan);
+            font-size: clamp(0.7rem, 1.2vh, 0.85rem); letter-spacing: 0.1em;
+            margin-bottom: 0.3rem; display: block; opacity: 0.8;
+        }
+
+        .social-links { display: flex; gap: 2rem; margin-top: clamp(1rem, 2.5vh, 2.5rem); }
+        .social-links a { color: var(--text-muted); font-size: clamp(1.3rem, 2.5vh, 1.6rem); transition: color 0.3s, transform 0.3s; }
+        .social-links a:hover { color: var(--accent-cyan); transform: translateY(-3px) scale(1.1); }
+
+        /* --- Footer Outside Card --- */
+        .global-footer {
+            margin-top: clamp(0.5rem, 1.5vh, 1rem);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            width: 100%;
+            z-index: 10;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-content-wrapper { grid-template-columns: 1fr; gap: 1.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-name { font-size: 3rem; }
+            .card-panel { height: 85vh; padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Glowing Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <a href="#hero" class="logo heading-font">RS</a>
+            <div class="nav-badge">
+                <div class="nav-badge-dot"></div>
+                <span class="heading-font" style="font-size: 0.75rem; letter-spacing: 0.1em; color: var(--accent-cyan);">OPEN TO ROLES</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#project-1">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Snapping Wrapper -->
+    <main class="snap-wrapper">
+        
+        <!-- 1. Hero Card Section -->
+        <section class="snap-section" id="hero">
+            <div class="card-panel">
+                <div class="hero-subtitle heading-font">Hello, I'm</div>
+                <h1 class="hero-name">Pisupati Rama<br>Sridhrut</h1>
+                <h2 class="hero-role">Game Developer | Electrical Engineering Student | Robotics Enthusiast</h2>
+                <p class="hero-desc">
+                    I build fun, memorable, and highly enjoyable games. Currently pursuing my engineering degree, I merge deep technical logic with creative design to craft powerful interactive experiences.
+                </p>
+                <div class="cta-container">
+                    <a href="#project-1" class="cta-btn">View My Work</a>
+                    <a href="#contact" class="cta-btn outline">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Card Section -->
+        <section class="snap-section" id="about">
+            <div class="card-panel">
+                <h2 class="section-title heading-font">Origins & Design Philosophy</h2>
+                <div class="about-text">
+                    <p>
+                        Hello! I'm <strong>Pisupati Rama Sridhrut</strong>, a 3rd-year Electrical and Electronics Engineering student at MIT Manipal and a passionate game developer with a deep love for crafting elegant and very strong narrative games. 
+                    </p>
+                    <p>
+                        I enjoy working across all aspects of game development, from engineering robust controllers and designing innovative gameplay mechanics to creating soulful audio tracks. When I'm not coding, you'll find me exploring new technologies, creating art, and producing music.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Skills Card Section -->
+        <section class="snap-section" id="skills">
+            <div class="card-panel">
+                <h2 class="section-title heading-font">Skills & Arsenal</h2>
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h3 class="heading-font"><i class="fa-solid fa-code"></i> Languages & Logic</h3>
+                        <p>C, C++, C#, Python, GDScript, JavaScript, MATLAB/Simulink</p>
+                    </div>
+                    <div class="info-block">
+                        <h3 class="heading-font"><i class="fa-solid fa-cube"></i> Engines & Production</h3>
+                        <p>Godot Engine, Unreal Engine, Unity, FL Studio, Git/GitHub</p>
+                    </div>
+                    <div class="info-block">
+                        <h3 class="heading-font"><i class="fa-solid fa-microchip"></i> Core Disciplines</h3>
+                        <p>Game Mechanics Design, Systems Engineering, Audio Production, Robotics (ROS-2)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Project 1 Card Section -->
+        <section class="snap-section" id="project-1">
+            <div class="card-panel project-card">
+                <video class="project-video-bg" autoplay muted loop playsinline>
+                    <source src="https://via.placeholder.com/1200x800?text=Brackeys+Jam+Gameplay" type="video/mp4">
+                </video>
+                <div class="project-content">
+                    <div class="project-header-top">
+                        <span class="project-tags">Godot, GDScript, Narrative Design, UI/UX</span>
+                        <div class="project-links">
+                            <a href="https://github.com/RamaSridhrut570" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://byteofwar-570.itch.io" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title heading-font">Brackey's Game Jam 2025.1</h3>
+                    <p class="project-desc">Achieved #70 out of 2,200 global submissions in the Innovation category. Developed a UI-based narrative game about AI that breaks the fourth wall to deliver a powerful message against procrastination, completed under a strict 7-day deadline.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Project 2 Card Section -->
+        <section class="snap-section" id="project-2">
+            <div class="card-panel project-card">
+                <video class="project-video-bg" autoplay muted loop playsinline>
+                    <source src="https://via.placeholder.com/1200x800?text=FPS+Controller+Mechanics" type="video/mp4">
+                </video>
+                <div class="project-content">
+                    <div class="project-header-top">
+                        <span class="project-tags">Godot, Vector Math, Systems Design</span>
+                        <div class="project-links">
+                            <a href="https://github.com/RamaSridhrut570" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title heading-font">Advanced FPS & Combat Systems</h3>
+                    <p class="project-desc">Engineered a comprehensive FPS system featuring state-driven movement (slide, crouch, sprint, dash) and a dynamic mini-map. Integrated complex mechanics including a God of War-inspired axe throwing and recall system with satisfying physics feedback.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Project 3 Card Section -->
+        <section class="snap-section" id="project-3">
+            <div class="card-panel project-card">
+                <video class="project-video-bg" autoplay muted loop playsinline>
+                    <source src="https://via.placeholder.com/1200x800?text=Unreal+Engine+Horror" type="video/mp4">
+                </video>
+                <div class="project-content">
+                    <div class="project-header-top">
+                        <span class="project-tags">Unreal Engine, C++, Blueprints, Lighting</span>
+                        <div class="project-links">
+                            <a href="https://github.com/RamaSridhrut570" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title heading-font">Unreal Interactive Environment</h3>
+                    <p class="project-desc">Developed an immersive horror template showcasing dynamic physical doors with directional push/hold mechanics. Implemented an interconnected sprint-stamina system, functional lighting switches, and atmospheric environmental rendering.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Other Projects Card Section -->
+        <section class="snap-section" id="other-projects">
+            <div class="card-panel">
+                <h2 class="section-title heading-font">Additional Archives</h2>
+                <div class="other-projects-grid">
+                    <article class="other-card">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <h3 class="heading-font">Software Applications</h3>
+                        <p>Developed functional software solutions including PikVault and an Offline-Password-Manager for secure data handling.</p>
+                        <span class="project-tags" style="font-size:0.8rem;">Python, Cryptography, App Dev</span>
+                    </article>
+                    <article class="other-card">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <h3 class="heading-font">Advanced Controllers</h3>
+                        <p>Engineered a Third-Person flight controller with dynamic FOV, and a Hollow Knight-style 2D platformer with pressure-based jumping.</p>
+                        <span class="project-tags" style="font-size:0.8rem;">Godot, Movement Physics</span>
+                    </article>
+                    <article class="other-card">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <h3 class="heading-font">Retro Prototypes</h3>
+                        <p>Created a Doom-style top-down shooter featuring AI evasion mechanics, subsequently ported into a retro FPS template.</p>
+                        <span class="project-tags" style="font-size:0.8rem;">Godot, AI Pathfinding, UI</span>
+                    </article>
+                    <article class="other-card">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <h3 class="heading-font">Physics Arcade</h3>
+                        <p>Designed 'Puck Ball Soccer' with drag-and-shoot mechanics and a Flappy Bird remake complete with parallax scrolling and scoring.</p>
+                        <span class="project-tags" style="font-size:0.8rem;">Godot, 2D Physics, Parallax</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Contact & Footer Section -->
+        <section class="snap-section" id="contact">
+            <div class="card-panel">
+                <h2 class="section-title heading-font">Establish Connection</h2>
+                
+                <div class="contact-content-wrapper">
+                    <div class="contact-info">
+                        <p>
+                            Have a project in mind or just want to say hello? My comms are always open. I'm actively seeking game development internships, creative collaborations, and robotics projects.
+                        </p>
+                        <div class="social-links">
+                            <a href="https://github.com/RamaSridhrut570" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/pisupati-rama-sridhrut/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://byteofwar-570.itch.io" target="_blank" rel="noopener noreferrer" aria-label="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" onsubmit="event.preventDefault();">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">IDENTIFIER / NAME</label>
+                                <input type="text" id="name" name="name" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">TRANSMISSION VECTOR / EMAIL</label>
+                                <input type="email" id="email" name="email" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">DATA PAYLOAD / MESSAGE</label>
+                            <textarea id="message" name="message" rows="3" required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="cta-btn" style="padding: 0.8rem 2rem; border: none; cursor: none;">Send Transmission</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Global Footer placed outside the contact card -->
+            <footer class="global-footer">
+                <p>Designed & Built by <strong>Pisupati Rama Sridhrut</strong>. &copy; 2026</p>
+            </footer>
+        </section>
+
+    </main>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Custom Cursor Logic
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+        
+        window.addEventListener('mousemove', function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+
+            document.documentElement.style.setProperty('--mouse-x', `${posX}px`);
+            document.documentElement.style.setProperty('--mouse-y', `${posY}px`);
+        });
+
+        const interactables = document.querySelectorAll('a, button, input, textarea');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorOutline.style.width = '60px';
+                cursorOutline.style.height = '60px';
+                cursorOutline.style.backgroundColor = 'rgba(0, 240, 255, 0.1)';
+                cursorOutline.style.borderColor = '#ffffff';
+                cursorOutline.style.boxShadow = '0 0 15px rgba(0, 240, 255, 0.8), inset 0 0 15px rgba(0, 240, 255, 0.5)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorOutline.style.width = '40px';
+                cursorOutline.style.height = '40px';
+                cursorOutline.style.backgroundColor = 'transparent';
+                cursorOutline.style.borderColor = 'var(--accent-cyan)';
+                cursorOutline.style.boxShadow = '0 0 10px rgba(0, 240, 255, 0.5), inset 0 0 8px rgba(0, 240, 255, 0.3)';
+            });
+        });
+
+        // Intersection Observer to smoothly reveal cards as they snap into view
+        const observerOptions = {
+            root: document.querySelector('.snap-wrapper'),
+            threshold: 0.3
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-panel').forEach(card => {
+            cardObserver.observe(card);
+        });
+    </script>
+</body>
+</html>
