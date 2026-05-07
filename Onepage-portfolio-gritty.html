@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pisupati Rama Sridhrut | Gothic Portfolio</title>
+
+    <!-- Fonts -> Lora & Playfair (Fallbacks) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            /* Gothic Blood Palette */
+            --bg-deep: #050000;
+            --bg-mid: #1a0000;
+            --bg-highlight: #2e0000;
+
+            --accent-blood: #ff002b;
+            --accent-crimson: #800000;
+            --accent-glow: #ff4d4d;
+
+            --text-main: #ffe6e6;
+            --text-muted: #cc6666;
+
+            /* Fonts -> Custom First -> Google Fallback */
+            --font-heading: 'Night History', 'Splendid 66', 'Playfair Display', serif;
+            --font-body: 'Simple California', 'Lora', serif;
+
+            /* Cursor Tracking */
+            --mouse-x: 50vw;
+            --mouse-y: 50vh;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            background-color: var(--bg-deep);
+            background-image:
+                radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 0, 43, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at top right, rgba(128, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom left, rgba(46, 0, 0, 0.5) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
+            background-attachment: fixed;
+            overflow: hidden;
+            line-height: 1.6;
+            font-size: 1.125rem;
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-blood);
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px var(--accent-blood), 0 0 20px var(--accent-crimson);
+            transition: width 0.2s, height 0.2s;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-blood);
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255, 0, 43, 0.5), inset 0 0 8px rgba(255, 0, 43, 0.3);
+            transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+
+        h1, h2, h3, h4, .heading-font {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: clamp(1rem, 2vh, 1.5rem) 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(180deg, rgba(5, 0, 0, 0.9) 0%, transparent 100%);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            color: var(--accent-blood);
+            text-decoration: none;
+            text-shadow: 0 0 15px rgba(255, 0, 43, 0.4);
+            position: relative;
+        }
+
+        .nav-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 0, 43, 0.05);
+            border: 1px solid rgba(255, 0, 43, 0.2);
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(255, 0, 43, 0.05);
+        }
+
+        .nav-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-blood);
+            box-shadow: 0 0 8px var(--accent-blood);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* Nav Eye Button */
+        .vampire-eye {
+            width: 32px; height: 18px; 
+            background: #fff; 
+            border-radius: 50%; 
+            position: relative; overflow: hidden; 
+            display: flex; align-items: center; justify-content: center; 
+            box-shadow: 0 0 10px var(--accent-blood), inset 0 0 8px rgba(255,0,43,0.8); 
+            cursor: none;
+            border: 1px solid var(--accent-blood);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .vampire-eye:hover {
+            box-shadow: 0 0 20px var(--accent-blood), inset 0 0 12px rgba(255,0,43,1); 
+            transform: scale(1.1);
+        }
+
+        .pupil {
+            width: 10px; height: 10px; 
+            background: radial-gradient(circle, #000 40%, var(--accent-blood) 100%); 
+            border-radius: 50%; 
+            position: absolute; 
+            transition: transform 0.05s ease-out;
+            box-shadow: 0 0 4px #000;
+        }
+
+        .nav-resume-btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 0, 43, 0.45);
+            background: rgba(128, 0, 0, 0.18);
+            color: var(--accent-blood);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            letter-spacing: 0.14em;
+            transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+        }
+
+        .nav-resume-btn:hover {
+            border-color: var(--accent-blood);
+            color: #ffffff;
+            background: rgba(128, 0, 0, 0.3);
+        }
+
+        .snap-wrapper {
+            height: 100vh;
+            width: 100vw;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .snap-wrapper::-webkit-scrollbar { display: none; }
+
+        .snap-section {
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 5vw 2vh 5vw;
+        }
+
+        .card-panel {
+            width: 100%;
+            max-width: 1400px;
+            height: 82vh;
+            max-height: 850px;
+            background: rgba(26, 0, 0, 0.5);
+            border: 1px solid rgba(128, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: clamp(1.5rem, 3vh, 3rem) clamp(2rem, 5vw, 4rem);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .card-panel.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .card-panel:hover {
+            border-color: rgba(255, 0, 43, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 43, 0.1);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vh, 3rem);
+            margin-bottom: clamp(1rem, 2vh, 2rem);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: var(--text-main);
+            flex-shrink: 0;
+            text-transform: capitalize;
+        }
+
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 0, 43, 0.3), transparent);
+        }
+
+        .hero-subtitle {
+            color: var(--accent-blood);
+            font-size: clamp(1.2rem, 2.5vh, 1.5rem);
+            margin-bottom: clamp(0.5rem, 1vh, 1rem);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-subtitle::before {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 40px;
+            background: var(--accent-blood);
+            box-shadow: 0 0 10px var(--accent-blood);
+        }
+
+        .hero-name {
+            font-size: clamp(3rem, 6.5vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: clamp(0.5rem, 1vh, 1rem);
+            background: linear-gradient(to right, #ffffff, var(--accent-blood));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-role {
+            font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+            color: var(--text-muted);
+            margin-bottom: clamp(0.8rem, 1.5vh, 1.5rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-desc {
+            max-width: 700px;
+            font-size: clamp(1.2rem, 2vh, 1.5rem);
+            color: var(--text-muted);
+            margin-bottom: clamp(1.5rem, 3vh, 3rem);
+            font-style: italic;
+        }
+
+        .cta-container { display: flex; gap: 1.5rem; }
+
+        .cta-btn {
+            display: inline-block;
+            padding: clamp(0.8rem, 1.5vh, 1rem) 2.5rem;
+            border: 1px solid var(--accent-crimson);
+            color: var(--accent-blood);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: rgba(128, 0, 0, 0.05);
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 43, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-btn:hover {
+            background: rgba(128, 0, 0, 0.2);
+            color: #fff;
+            border-color: var(--accent-blood);
+            box-shadow: 0 0 20px rgba(255, 0, 43, 0.3), inset 0 0 15px rgba(128, 0, 0, 0.3);
+        }
+
+        .cta-btn:hover::before { left: 100%; }
+
+        .about-text {
+            max-width: 900px;
+            font-size: clamp(1.2rem, 2vh, 1.5rem);
+            color: var(--text-muted);
+            border-left: 2px solid var(--accent-crimson);
+            padding-left: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .about-text p { margin-bottom: clamp(0.8rem, 1.5vh, 1.5rem); }
+
+        .skills-scroll-container {
+            position: relative; display: flex; align-items: center;
+            gap: clamp(0.8rem, 1.5vw, 1.5rem); margin-top: clamp(1rem, 2vh, 2rem); min-height: 0;
+        }
+
+        .skills-scroll-track {
+            flex: 1; overflow-x: auto; overflow-y: hidden;
+            scroll-snap-type: x mandatory; scroll-behavior: smooth;
+            scrollbar-width: none; padding: 0.5rem 0; min-height: 0;
+        }
+
+        .skills-scroll-track::-webkit-scrollbar { display: none; }
+
+        .skills-items-wrapper { display: flex; gap: clamp(1rem, 2vw, 1.5rem); padding: 0.5rem 0; min-width: min-content; }
+
+        .skill-item {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 0.75rem; padding: clamp(1.2rem, 2vh, 1.8rem) clamp(1.5rem, 3vw, 2.2rem);
+            background: rgba(128, 0, 0, 0.08); border: 1px solid rgba(255, 0, 43, 0.15);
+            border-radius: 14px; flex-shrink: 0; min-width: clamp(140px, 18vw, 200px);
+            transition: all 0.3s ease; scroll-snap-align: start; cursor: none;
+        }
+
+        .skill-item:hover {
+            background: rgba(128, 0, 0, 0.18); border-color: rgba(255, 0, 43, 0.35);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 0, 43, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .skill-icon {
+            font-size: clamp(2rem, 4vh, 2.8rem); color: var(--accent-blood);
+            text-shadow: 0 0 10px rgba(255, 0, 43, 0.3); transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .skill-item:hover .skill-icon {
+            transform: scale(1.15); text-shadow: 0 0 20px rgba(255, 0, 43, 0.6);
+        }
+
+        .skill-label {
+            color: var(--text-main); font-size: clamp(1rem, 1.8vh, 1.2rem);
+            font-family: var(--font-heading); letter-spacing: 0.08em; text-align: center; line-height: 1.3;
+        }
+
+        .skill-description {
+            color: var(--text-muted); font-size: clamp(0.8rem, 1.3vh, 1rem); text-align: center; font-style: italic; line-height: 1.4;
+        }
+
+        .skills-scroll-arrow {
+            width: clamp(36px, 5vw, 44px); height: clamp(36px, 5vw, 44px); border-radius: 50%;
+            border: 1px solid rgba(255, 0, 43, 0.35); background: rgba(128, 0, 0, 0.12);
+            color: var(--accent-blood); display: grid; place-items: center; flex-shrink: 0;
+            transition: all 0.25s ease; cursor: none;
+        }
+
+        .skills-scroll-arrow:hover:not(:disabled) {
+            border-color: var(--accent-blood); background: rgba(128, 0, 0, 0.28); color: #ffffff; transform: translateX(0) scale(1.08);
+        }
+
+        .skills-scroll-arrow:disabled { opacity: 0.35; }
+
+        .section-effect-canvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.18; transition: opacity 0.7s ease, transform 1.2s ease;
+        }
+
+        .card-panel:hover .section-effect-canvas { opacity: 0.42; transform: scale(1.04); }
+
+        .engine-filter-bar { display: flex; gap: 0.75rem; margin-bottom: clamp(1rem, 2vh, 1.8rem); flex-wrap: wrap; }
+
+        .engine-tab {
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 1.2rem;
+            background: rgba(128, 0, 0, 0.06); border: 1px solid rgba(255, 0, 43, 0.18);
+            color: var(--text-muted); font-family: var(--font-heading); font-size: 1rem;
+            letter-spacing: 0.14em; text-transform: uppercase; border-radius: 4px; cursor: none; transition: all 0.25s ease;
+        }
+
+        .engine-tab:hover { border-color: rgba(255, 0, 43, 0.5); color: var(--text-main); }
+        .engine-tab.active {
+            background: rgba(255, 0, 43, 0.12); border-color: var(--accent-blood);
+            color: var(--accent-blood); box-shadow: 0 0 14px rgba(255, 0, 43, 0.15);
+        }
+
+        .projects-shell { position: relative; z-index: 2; display: flex; flex-direction: column; height: 100%; min-height: 0; }
+        .projects-panels { position: relative; flex: 1; min-height: 0; }
+        .project-engine-panel { display: none; height: 100%; min-height: 0; }
+        .project-engine-panel.active { display: block; }
+        .engine-snap-track { height: 100%; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; padding-right: 0.25rem; }
+        .engine-snap-track::-webkit-scrollbar { display: none; }
+
+        .project-snap-page {
+            min-height: 100%; scroll-snap-align: start; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem; align-items: center; align-content: center; padding: 0.45rem 0.65rem 1.3rem;
+        }
+
+        /* --- PROJECT CARDS SIZE FIX --- */
+        .proj-grid-card {
+            position: relative; overflow: hidden; border: 1px solid rgba(128, 0, 0, 0.25); border-radius: 12px;
+            background: rgba(26, 0, 0, 0.7); backdrop-filter: blur(8px); display: flex; flex-direction: column;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.35s; min-height: 240px; height: clamp(200px, 45vh, 320px);
+        }
+
+        .proj-grid-card:hover {
+            border-color: rgba(255, 0, 43, 0.45); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 18px rgba(255, 0, 43, 0.08); transform: translateY(-4px);
+        }
+
+        .proj-grid-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: opacity 0.6s; filter: brightness(0.8) sepia(0.5) hue-rotate(-20deg) saturate(2); }
+        .proj-grid-card:hover .proj-grid-video { opacity: 0.7; filter: brightness(1) sepia(0.5) hue-rotate(-20deg) saturate(2); }
+
+        .proj-grid-content {
+            position: relative; z-index: 2; display: flex; flex-direction: column; gap: 0.55rem;
+            padding: clamp(1rem, 2vh, 1.5rem) clamp(1rem, 2vw, 1.5rem); height: 100%; background: linear-gradient(0deg, rgba(5, 0, 0, 0.8) 0%, rgba(5, 0, 0, 0.1) 100%);
+        }
+
+        .proj-grid-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+        .proj-grid-title { font-size: clamp(1.1rem, 1.8vh, 1.4rem); color: var(--text-main); line-height: 1.2; margin-top: auto; }
+        .proj-grid-desc { font-size: clamp(0.8rem, 1.3vh, 0.95rem); color: var(--text-muted); line-height: 1.5; }
+
+        .engine-badge {
+            display: inline-block; font-family: var(--font-heading); font-size: 0.8rem; letter-spacing: 0.16em;
+            padding: 0.2rem 0.65rem; border-radius: 3px; align-self: flex-start;
+        }
+
+        .godot-badge { background: rgba(255, 0, 43, 0.12); border: 1px solid rgba(255, 0, 43, 0.35); color: #ff3355; }
+        .unreal-badge { background: rgba(128, 0, 0, 0.12); border: 1px solid rgba(128, 0, 0, 0.35); color: #ff6666; }
+        .unity-badge { background: rgba(180, 0, 0, 0.10); border: 1px solid rgba(180, 0, 0, 0.3); color: #ff9999; }
+
+        .projects-controls { position: relative; z-index: 2; margin-top: 0.65rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+        .projects-arrow { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255, 0, 43, 0.35); background: rgba(128, 0, 0, 0.12); color: var(--accent-blood); display: grid; place-items: center; transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, transform 0.2s ease; }
+        .projects-arrow:hover:not(:disabled) { border-color: var(--accent-blood); background: rgba(128, 0, 0, 0.28); color: #ffffff; transform: translateY(-1px); }
+        .projects-arrow:disabled { opacity: 0.35; }
+
+        .projects-indicators { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 18px; }
+        .projects-indicator { width: 9px; height: 9px; border-radius: 999px; border: 1px solid rgba(255, 0, 43, 0.45); background: rgba(128, 0, 0, 0.18); transition: width 0.25s ease, background-color 0.25s ease, border-color 0.25s ease; }
+        .projects-indicator.active { width: 22px; background: rgba(255, 0, 43, 0.9); border-color: rgba(255, 0, 43, 1); }
+
+        .main-snap-controls { position: fixed; right: clamp(0.8rem, 2vw, 1.4rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.55rem; z-index: 1200; }
+        .main-snap-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 0, 43, 0.4); background: rgba(128, 0, 0, 0.18); color: var(--accent-blood); display: grid; place-items: center; transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease, transform 0.2s ease; }
+        .main-snap-arrow:hover:not(:disabled) { border-color: var(--accent-blood); background: rgba(128, 0, 0, 0.32); color: #ffffff; transform: translateY(-1px); }
+        .main-snap-arrow:disabled { opacity: 0.35; }
+
+        .other-projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2vh, 2rem); margin-top: clamp(0.5rem, 1vh, 1rem); align-items: stretch; }
+        .other-feature-card { background: rgba(26, 0, 0, 0.5); border: 1px solid rgba(255, 0, 43, 0.18); border-radius: 14px; padding: clamp(1rem, 1.8vh, 1.6rem); display: flex; flex-direction: column; gap: clamp(1rem, 1.8vh, 1.5rem); min-height: 100%; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+        .other-feature-card:hover { transform: translateY(-4px); border-color: rgba(255, 0, 43, 0.45); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6); }
+
+        .other-video-item { display: grid; grid-template-columns: minmax(180px, 0.95fr) minmax(0, 1.25fr); gap: clamp(0.8rem, 1.2vw, 1.2rem); background: rgba(46, 0, 0, 0.45); border: 1px solid rgba(128, 0, 0, 0.25); border-radius: 12px; padding: clamp(0.7rem, 1.2vh, 1rem); position: relative; overflow: hidden; transition: border-color 0.28s ease, box-shadow 0.28s ease; }
+        .other-video-item.is-playing { border-color: rgba(255, 0, 43, 0.55); box-shadow: 0 0 26px rgba(255, 0, 43, 0.2); }
+        .other-video-wrap { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 0, 43, 0.2); background: #050000; aspect-ratio: 16 / 9; transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease; }
+        .other-video-wrap.is-playing { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; border-radius: 12px; border-color: rgba(255, 0, 43, 0.55); box-shadow: 0 0 26px rgba(255, 0, 43, 0.28); z-index: 4; }
+        .other-project-video { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.8) sepia(0.5) hue-rotate(-20deg) saturate(2); }
+        .other-video-toggle { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.65); background: rgba(5, 0, 0, 0.65); color: var(--accent-blood); display: grid; place-items: center; transition: transform 0.2s ease, background-color 0.3s ease, border-color 0.3s ease; }
+        .other-video-toggle:hover { transform: translate(-50%, -50%) scale(1.08); background: rgba(128, 0, 0, 0.4); border-color: var(--accent-blood); }
+
+        .other-video-copy h3 { font-size: clamp(1.2rem, 2vh, 1.4rem); margin-bottom: 0.3rem; color: var(--text-main); }
+        .other-video-copy p { color: var(--text-muted); font-size: clamp(0.9rem, 1.4vh, 1rem); line-height: 1.45; margin-bottom: 0.5rem; }
+        .other-video-copy .project-tags { font-size: 0.85rem; color: var(--accent-blood); }
+
+        .other-card-link { display: inline-flex; align-items: center; gap: 0.35rem; border: 1px solid rgba(255, 0, 43, 0.35); color: var(--accent-blood); text-decoration: none; padding: 0.28rem 0.62rem; border-radius: 999px; font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 0.08em; transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
+        .other-card-link:hover { background: rgba(128, 0, 0, 0.28); border-color: var(--accent-blood); color: #ffffff; }
+
+        .contact-content-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 3rem); height: 100%; }
+        .contact-info { display: flex; flex-direction: column; justify-content: center; }
+        .contact-info p { color: var(--text-muted); font-size: clamp(1.1rem, 2vh, 1.3rem); line-height: 1.6; }
+        .contact-form { display: flex; flex-direction: column; justify-content: center; gap: clamp(1rem, 1.8vh, 2rem); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 1.5vw, 1.5rem); }
+        
+        .contact-form input, .contact-form textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--accent-crimson); color: var(--text-main); font-family: var(--font-body); font-size: clamp(1rem, 1.8vh, 1.2rem); padding: 0.4rem 0; transition: border-color 0.3s, box-shadow 0.3s; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-bottom-color: var(--accent-blood); box-shadow: 0 5px 10px -5px rgba(255, 0, 43, 0.3); }
+        .contact-form label { font-family: var(--font-heading); color: var(--accent-blood); font-size: clamp(0.9rem, 1.4vh, 1rem); letter-spacing: 0.1em; margin-bottom: 0.3rem; display: block; opacity: 0.8; }
+
+        .social-links { display: flex; gap: 2rem; margin-top: clamp(1rem, 2.5vh, 2.5rem); }
+        .social-links a { width: 3rem; height: 3rem; border-radius: 50%; display: grid; place-items: center; color: var(--text-muted); font-size: clamp(1.5rem, 3vh, 1.9rem); border: 1px solid rgba(255, 0, 43, 0.18); background: rgba(128, 0, 0, 0.08); transition: color 0.3s, transform 0.3s, background-color 0.3s, border-color 0.3s; }
+        .social-links a:hover { color: var(--accent-blood); transform: translateY(-3px) scale(1.08); background: rgba(128, 0, 0, 0.18); border-color: rgba(255, 0, 43, 0.45); }
+
+        .global-footer { margin-top: clamp(0.5rem, 1.5vh, 1rem); text-align: center; color: var(--text-muted); font-size: 0.95rem; width: 100%; z-index: 10; }
+
+        @media (max-width: 1024px) {
+            .contact-content-wrapper { grid-template-columns: 1fr; gap: 1.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .other-projects-grid { grid-template-columns: 1fr; }
+            .project-snap-page { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-name { font-size: 3rem; }
+            .card-panel { height: 85vh; padding: 1.5rem; }
+            .other-video-item { grid-template-columns: 1fr; }
+            .main-snap-controls { right: 0.5rem; }
+            .main-snap-arrow { width: 34px; height: 34px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Custom Glowing Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <a href="#hero" class="logo heading-font">RS</a>
+            <div class="nav-badge">
+                <div class="nav-badge-dot"></div>
+                <span class="heading-font" style="font-size: 0.85rem; letter-spacing: 0.1em; color: var(--accent-blood);">HUNTING FOR ROLES</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">ARSENAL</a></li>
+            <li><a href="#projects">TALES</a></li>
+            <li><a href="#contact">SUMMON</a></li>
+            <li>
+                <!-- Nav Eye Tracker -->
+                <div id="vampire-eye" class="vampire-eye">
+                    <div id="pupil" class="pupil"></div>
+                </div>
+            </li>
+        </ul>
+        <a class="nav-resume-btn" href="#" target="_blank" rel="noopener noreferrer">SCROLL</a>
+    </nav>
+
+    <div class="main-snap-controls" aria-label="Main section navigation">
+        <button class="main-snap-arrow" id="main-snap-prev" type="button" aria-label="Previous section"><i class="fa-solid fa-chevron-up"></i></button>
+        <button class="main-snap-arrow" id="main-snap-next" type="button" aria-label="Next section"><i class="fa-solid fa-chevron-down"></i></button>
+    </div>
+
+    <!-- Main Snapping Wrapper -->
+    <main class="snap-wrapper">
+
+        <!-- Hero Card -->
+        <section class="snap-section" id="hero">
+            <div class="card-panel">
+                <div class="hero-subtitle heading-font">I am</div>
+                <h1 class="hero-name">Pisupati Rama<br>Sridhrut</h1>
+                <h2 class="hero-role">Game Alchemist | Machine Weaver</h2>
+                <p class="hero-desc">
+                    I forge visceral, unforgettable, and highly immersive games. Merging dark technical logic with profound creative design to breathe life into interactive worlds.
+                </p>
+                <div class="cta-container">
+                    <a href="#projects" class="cta-btn">Witness My Craft</a>
+                    <a href="#" class="cta-btn" target="_blank" rel="noopener noreferrer">The Scroll</a>
+                    <a href="#contact" class="cta-btn outline">Summon Me</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Card -->
+        <section class="snap-section" id="about">
+            <div class="card-panel">
+                <canvas class="section-effect-canvas"></canvas>
+                <h2 class="section-title heading-font">My Dark Origin</h2>
+                <div class="about-text">
+                    <p>
+                        Greetings. I'm <strong>Pisupati Rama Sridhrut</strong>, an Electrical and Electronics Engineering adept at MIT Manipal. I bleed code and game development, harboring a relentless passion for sculpting profound narrative experiences.
+                    </p>
+                    <p>
+                        I manipulate all facets of development: summoning complex systems, designing treacherous gameplay loops, and composing melancholic soundscapes. I seek covenants in <strong>Game Design, Gameplay Programming, and Game Art</strong> to inject my cursed creativity into the wild.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Card -->
+        <section class="snap-section" id="skills">
+            <div class="card-panel">
+                <canvas class="section-effect-canvas"></canvas>
+                <h2 class="section-title heading-font" style="margin-bottom: 0.5rem;">Arsenal</h2>
+
+                <h3 class="heading-font" style="color: var(--accent-blood); font-size: 1.3rem; margin-top: 0.5rem;">Incantations</h3>
+                <div class="skills-scroll-container" style="margin-top: 0.5rem;">
+                    <button class="skills-scroll-arrow" id="languages-scroll-left"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="skills-scroll-track" id="languages-scroll-track"><div class="skills-items-wrapper" id="languages-items-wrapper"></div></div>
+                    <button class="skills-scroll-arrow" id="languages-scroll-right"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+
+                <h3 class="heading-font" style="color: var(--accent-blood); font-size: 1.3rem; margin-top: 1.5rem;">Relics</h3>
+                <div class="skills-scroll-container" style="margin-top: 0.5rem;">
+                    <button class="skills-scroll-arrow" id="tools-scroll-left"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="skills-scroll-track" id="tools-scroll-track"><div class="skills-items-wrapper" id="tools-items-wrapper"></div></div>
+                    <button class="skills-scroll-arrow" id="tools-scroll-right"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Card -->
+        <section class="snap-section" id="projects">
+            <div class="card-panel projects-shell" style="justify-content: flex-start;">
+                <canvas class="section-effect-canvas"></canvas>
+                <div style="position: relative; z-index: 2; flex-shrink: 0;">
+                    <h2 class="section-title heading-font">Grim Tales</h2>
+                    <div class="engine-filter-bar" id="engine-filter-bar">
+                        <button class="engine-tab active" data-engine="godot">Godot</button>
+                        <button class="engine-tab" data-engine="unreal">Unreal</button>
+                        <button class="engine-tab" data-engine="unity">Unity</button>
+                    </div>
+                </div>
+
+                <div class="projects-panels" id="projects-panels">
+                    <div class="project-engine-panel active" data-engine-panel="godot"><div class="engine-snap-track" data-engine-track="godot"></div></div>
+                    <div class="project-engine-panel" data-engine-panel="unreal"><div class="engine-snap-track" data-engine-track="unreal"></div></div>
+                    <div class="project-engine-panel" data-engine-panel="unity"><div class="engine-snap-track" data-engine-track="unity"></div></div>
+                </div>
+
+                <div class="projects-controls">
+                    <button class="projects-arrow" id="projects-prev"><i class="fa-solid fa-chevron-up"></i></button>
+                    <div class="projects-indicators" id="projects-indicators"></div>
+                    <button class="projects-arrow" id="projects-next"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="snap-section" id="contact">
+            <div class="card-panel">
+                <canvas class="section-effect-canvas"></canvas>
+                <h2 class="section-title heading-font">Establish Covenant</h2>
+                <div class="contact-content-wrapper">
+                    <div class="contact-info">
+                        <p>Have a dark ritual in mind or just want to whisper into the void? My seals are open. Actively seeking covens for game development and robotics.</p>
+                        <div class="social-links">
+                            <a href="https://github.com/RamaSridhrut570" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/pisupati-rama-sridhrut/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://byteofwar-570.itch.io" target="_blank"><i class="fa-brands fa-itch-io"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form" onsubmit="event.preventDefault();">
+                        <div class="form-row">
+                            <div class="form-group"><label for="name">TRUE NAME</label><input type="text" id="name" required /></div>
+                            <div class="form-group"><label for="email">ETHEREAL MARK / EMAIL</label><input type="email" id="email" required /></div>
+                        </div>
+                        <div class="form-group"><label for="message">THE INCANTATION</label><textarea id="message" rows="3" required></textarea></div>
+                        <div><button type="submit" class="cta-btn" style="padding: 0.8rem 2rem; border: none; cursor: none;">Cast Message</button></div>
+                    </form>
+                </div>
+            </div>
+            <footer class="global-footer"><p>Forged by <strong>Pisupati Rama Sridhrut</strong>. &copy; 2026</p></footer>
+        </section>
+
+    </main>
+
+    <script>
+        // Custom Cursor & Eye Tracking Logic
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+        const eye = document.getElementById('vampire-eye');
+        const pupil = document.getElementById('pupil');
+
+        window.addEventListener('mousemove', function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+
+            document.documentElement.style.setProperty('--mouse-x', `${posX}px`);
+            document.documentElement.style.setProperty('--mouse-y', `${posY}px`);
+
+            // Eye tracking!
+            if(eye && pupil) {
+                const rect = eye.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const angle = Math.atan2(posY - centerY, posX - centerX);
+                const distance = Math.min(rect.width/4, Math.hypot(posX - centerX, posY - centerY) / 10);
+                pupil.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+            }
+        });
+
+        const interactables = document.querySelectorAll('a, button, input, textarea, .vampire-eye');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorOutline.style.width = '60px'; cursorOutline.style.height = '60px';
+                cursorOutline.style.backgroundColor = 'rgba(255, 0, 43, 0.1)';
+                cursorOutline.style.borderColor = '#ffffff';
+                cursorOutline.style.boxShadow = '0 0 15px rgba(255, 0, 43, 0.8), inset 0 0 15px rgba(255, 0, 43, 0.5)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorOutline.style.width = '40px'; cursorOutline.style.height = '40px';
+                cursorOutline.style.backgroundColor = 'transparent';
+                cursorOutline.style.borderColor = 'var(--accent-blood)';
+                cursorOutline.style.boxShadow = '0 0 10px rgba(255, 0, 43, 0.5), inset 0 0 8px rgba(255, 0, 43, 0.3)';
+            });
+        });
+
+        const observerOptions = { root: document.querySelector('.snap-wrapper'), threshold: 0.3 };
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, observerOptions);
+        document.querySelectorAll('.card-panel').forEach(card => cardObserver.observe(card));
+
+        const languagesData = [
+            { icon: 'fa-code', label: 'C', category: 'Language' }, { icon: 'fa-code', label: 'C++', category: 'Language' },
+            { icon: 'fa-code', label: 'C#', category: 'Language' }, { icon: 'fa-code', label: 'Python', category: 'Language' },
+            { icon: 'fa-code', label: 'GDScript', category: 'Language' }, { icon: 'fa-code', label: 'JavaScript', category: 'Language' }
+        ];
+
+        const toolsData = [
+            { icon: 'fa-cube', label: 'Godot', category: 'Engine' }, { icon: 'fa-cube', label: 'Unreal Engine', category: 'Engine' },
+            { icon: 'fa-cube', label: 'Unity', category: 'Engine' }, { icon: 'fa-music', label: 'FL Studio', category: 'Audio' },
+            { icon: 'fa-code-branch', label: 'Git/GitHub', category: 'Tools' }
+        ];
+
+        function renderSkillItems(data, wrapperId) {
+            const wrapper = document.getElementById(wrapperId);
+            if (!wrapper) return;
+            wrapper.innerHTML = data.map((skill, index) => `
+                <div class="skill-item" data-skill-index="${index}">
+                    <i class="fa-solid ${skill.icon} skill-icon"></i>
+                    <div class="skill-label">${skill.label}</div>
+                    <div class="skill-description">${skill.category}</div>
+                </div>
+            `).join('');
+        }
+        renderSkillItems(languagesData, 'languages-items-wrapper'); renderSkillItems(toolsData, 'tools-items-wrapper');
+
+        function setupSkillScroll(trackId, leftId, rightId) {
+            const track = document.getElementById(trackId), leftBtn = document.getElementById(leftId), rightBtn = document.getElementById(rightId);
+            if (!track) return;
+            function updateArrows() {
+                if (leftBtn) leftBtn.disabled = track.scrollLeft <= 0;
+                if (rightBtn) rightBtn.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+            }
+            if (leftBtn) leftBtn.addEventListener('click', () => track.scrollBy({ left: -280, behavior: 'smooth' }));
+            if (rightBtn) rightBtn.addEventListener('click', () => track.scrollBy({ left: 280, behavior: 'smooth' }));
+            track.addEventListener('scroll', updateArrows); window.addEventListener('resize', updateArrows); updateArrows();
+        }
+        setupSkillScroll('languages-scroll-track', 'languages-scroll-left', 'languages-scroll-right');
+        setupSkillScroll('tools-scroll-track', 'tools-scroll-left', 'tools-scroll-right');
+
+        function resizeCanvas(canvas) { const rect = canvas.parentElement.getBoundingClientRect(); canvas.width = rect.width || window.innerWidth; canvas.height = rect.height || window.innerHeight; }
+        
+        function initParticleField(canvas, pointCount) {
+            const ctx = canvas.getContext('2d');
+            const BLOOD = 'rgba(255,0,43,';
+            const pts = Array.from({ length: pointCount }, () => ({
+                x: Math.random(), y: Math.random(), vx: (Math.random() - 0.5) * 0.00018, vy: (Math.random() - 0.5) * 0.00018, r: 1 + Math.random() * 1.8,
+            }));
+
+            function draw() {
+                const W = canvas.width, H = canvas.height; ctx.clearRect(0, 0, W, H);
+                for (let i = 0; i < pts.length; i++) {
+                    for (let j = i + 1; j < pts.length; j++) {
+                        const dx = (pts[i].x - pts[j].x) * W, dy = (pts[i].y - pts[j].y) * H, d = Math.sqrt(dx * dx + dy * dy);
+                        if (d < 140) { ctx.beginPath(); ctx.moveTo(pts[i].x * W, pts[i].y * H); ctx.lineTo(pts[j].x * W, pts[j].y * H); ctx.strokeStyle = BLOOD + (0.55 * (1 - d / 140)) + ')'; ctx.lineWidth = 0.7; ctx.stroke(); }
+                    }
+                }
+                pts.forEach(p => { ctx.beginPath(); ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2); ctx.fillStyle = BLOOD + '0.8)'; ctx.fill(); p.x = (p.x + p.vx + 1) % 1; p.y = (p.y + p.vy + 1) % 1; });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        const effectCanvases = Array.from(document.querySelectorAll('.section-effect-canvas'));
+        effectCanvases.forEach(resizeCanvas); effectCanvases.forEach((canvas) => initParticleField(canvas, 60));
+        window.addEventListener('resize', () => effectCanvases.forEach(resizeCanvas));
+
+        const projectsData = {
+            godot: [
+                [{ title: "Brackey's 2025", engine: 'Godot', badgeClass: 'godot-badge', badgeText: 'GODOT', tags: 'Narrative &bull; UI/UX', description: 'A UI-based narrative game about AI.', video: 'Project_1.mp4', github: '#', link: '#', canvasType: 'particles' }]
+            ],
+            unreal: [[{ title: 'Horror Env', engine: 'Unreal', badgeClass: 'unreal-badge', badgeText: 'UNREAL', tags: 'Horror &bull; Lighting', description: 'Atmospheric rendering.', video: 'Project_3.mp4', github: '#', link: '#', canvasType: 'scanner' }]],
+            unity: [[{ title: 'Proto Alpha', engine: 'Unity', badgeClass: 'unity-badge', badgeText: 'UNITY', tags: 'C# &bull; Proto', description: 'Placeholder.', video: 'Project_2.mp4', github: '#', link: '#', canvasType: 'particles' }]]
+        };
+
+        function renderProjectCard(card, engine) {
+            return `<div class="proj-grid-card" data-engine="${engine}">
+                    <video class="proj-grid-video" autoplay muted loop playsinline><source src="${card.video}" type="video/mp4"></video>
+                    <div class="proj-grid-content"><div class="proj-grid-top"><span class="project-tags">${card.tags}</span></div><h3 class="proj-grid-title heading-font">${card.title}</h3><p class="proj-grid-desc">${card.description}</p><span class="engine-badge ${card.badgeClass}">${card.badgeText}</span></div></div>`;
+        }
+
+        Object.keys(projectsData).forEach(engine => {
+            const panel = document.querySelector(`.engine-snap-track[data-engine-track="${engine}"]`);
+            if (panel) panel.innerHTML = projectsData[engine].map(page => `<section class="project-snap-page">${page.map(card => renderProjectCard(card, engine)).join('')}</section>`).join('');
+        });
+
+        const engineTabs = Array.from(document.querySelectorAll('.engine-tab')), projectEnginePanels = Array.from(document.querySelectorAll('.project-engine-panel'));
+        engineTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const engine = tab.getAttribute('data-engine');
+                engineTabs.forEach(t => t.classList.toggle('active', t === tab));
+                projectEnginePanels.forEach(p => p.classList.toggle('active', p.getAttribute('data-engine-panel') === engine));
+            });
+        });
+        
+        const mainSnapWrapper = document.querySelector('.snap-wrapper'), mainSnapSections = Array.from(document.querySelectorAll('.snap-section'));
+        document.getElementById('main-snap-prev')?.addEventListener('click', () => mainSnapWrapper.scrollBy({ top: -window.innerHeight, behavior: 'smooth' }));
+        document.getElementById('main-snap-next')?.addEventListener('click', () => mainSnapWrapper.scrollBy({ top: window.innerHeight, behavior: 'smooth' }));
+
+    </script>
+</body>
+</html>
