@@ -404,63 +404,7 @@
   <!-- ===== ABOUT ===== -->
   <section id="about" class="relative py-24 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <!-- Image -->
-        <div class="fade-up relative">
-          <div class="relative overflow-hidden rounded-sm">
-            <img id="profilePhoto" alt="Pisupati Rama Sridhrut"
-              class="w-full h-[500px] object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
-              loading="lazy" style="display:none; aspect-ratio:3/4;">
-
-            <div id="photoPlaceholder" class="w-full h-[500px] flex items-center justify-center"
-              style="background: linear-gradient(135deg, #0f0f0f 0%, #1a0a0a 50%, #0f0f0f 100%);">
-              <div class="text-center">
-                <div class="w-24 h-24 rounded-full bg-[#E30613]/20 border border-[#E30613]/30 flex items-center justify-center mx-auto mb-4">
-                  <iconify-icon icon="lucide:user" class="text-[#E30613] text-4xl"></iconify-icon>
-                </div>
-                <p class="text-xs tracking-widest uppercase text-gray-600">Add your photo here</p>
-              </div>
-            </div>
-
-            <script>
-              // Try several common filenames to be resilient to different names
-              (function() {
-                const candidates = [
-                  'Assets/profilephoto.jpg', // existing file in repo (case-sensitive on some servers)
-                  'assets/profile.jpg', 'assets/photo.jpg', 'assets/profile.png', 'assets/photo.png', 'assets/photo.webp',
-                  'Assets/profilephoto.png', 'Assets/profilephoto.webp'
-                ];
-                const img = document.getElementById('profilePhoto');
-                const placeholder = document.getElementById('photoPlaceholder');
-
-                function tryNext() {
-                  if (candidates.length === 0) return; // leave placeholder visible
-                  const next = candidates.shift();
-                  img.src = next;
-                  img.onload = () => {
-                    img.style.display = '';
-                    placeholder.style.display = 'none';
-                  };
-                  img.onerror = () => {
-                    img.onload = img.onerror = null;
-                    tryNext();
-                  };
-                }
-
-                tryNext();
-              })();
-            </script>
-            <div class="absolute bottom-0 left-0 right-0 h-1/3"
-              style="background: linear-gradient(to top, #050505, transparent)"></div>
-          </div>
-          <!-- Floating badge -->
-          <div class="absolute -bottom-4 -right-4 md:bottom-8 md:right-8 glass-panel rounded-sm p-5"
-            style="animation: pulseGlow 3s ease-in-out infinite">
-            <p class="font-display text-3xl font-500 gradient-text">3+</p>
-            <p class="text-xs tracking-widest uppercase text-gray-400">Years Exp</p>
-          </div>
-        </div>
-
+      <div class="grid grid-cols-1 gap-16 items-center">
         <!-- Text -->
         <div>
           <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
@@ -769,6 +713,98 @@
     </div>
   </section>
 
+  <!-- ===== OTHER PROJECTS ===== -->
+  <section id="other-projects" class="relative py-24" style="background:#0a0a0a">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+          <span class="inline-flex items-center gap-2">
+            <span class="w-8 h-px bg-[#E30613]"></span>
+            Other Projects
+            <span class="w-8 h-px bg-[#E30613]"></span>
+          </span>
+        </p>
+        <h2 class="fade-up stagger-1 font-display text-3xl md:text-5xl font-500 tracking-tight leading-tight">
+          Experiments & <span class="gradient-text">Side Projects</span>
+        </h2>
+        <p class="fade-up stagger-2 text-sm font-light text-gray-500 mt-4 max-w-2xl mx-auto">A curated list of smaller experiments, templates and prototypes not shown in the main Projects section — pulled from my development notes.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Godot — FPP (GoW + Portals)</h4>
+          <p class="text-sm text-gray-400">FPP controller combining a God of War axe mechanic, Portal-style portals, player-only time slowdown, wall-climb/slide/run, double & wall jumps, sprint, head-bob, aiming and crosshair.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Godot — Voxel Blast</h4>
+          <p class="text-sm text-gray-400">Blast to carve holes in voxel terrain, charge-to-pierce attacks, voxel-sphere generation and a "megabonk" enemy-follow algorithm for superhero-style combat.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Godot — FPP Horror Demo</h4>
+          <p class="text-sm text-gray-400">Object pickup & placement, light switches, door interactions and area triggers for narrative progression in a horror setting.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Godot — Doom-style / Zombat Shooters</h4>
+          <p class="text-sm text-gray-400">Rotoscoped billboards as enemies and 2D textures-in-3D experiments; a Zombat shooter remix with custom tweaks.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Prisma (Brackey's Jam)</h4>
+          <p class="text-sm text-gray-400">Phases-of-life narrative jam entry (planned 7 stages, shipped 3). Parkour-focused using the FPP controller; ranked #344 overall and #146 in Audio.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">TPP Controller</h4>
+          <p class="text-sm text-gray-400">Third-person state-based controller with animation management, jump/double jump, roll, fly mode and FOV transitions.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">UI Games</h4>
+          <p class="text-sm text-gray-400">Small UI-driven prototypes: a truth-or-lie drag-and-drop detective game, and an AI procrastination experiment that breaks the 4th wall (desktop task interactions).</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">2D Games</h4>
+          <p class="text-sm text-gray-400">'Omb' — drag-and-shoot with probabilistic doors; 'In the End' — top-down shooter (Mini Jam #52); a turn-based Soccer Stars puck remake.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Operating System (Godot)</h4>
+          <p class="text-sm text-gray-400">Ongoing simulated OS project built inside Godot — custom UI, windowing and interaction systems.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Unreal — FPS Horror Template</h4>
+          <p class="text-sm text-gray-400">Blueprint-based FPS template with stamina & sprint systems and flashlight mechanics.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Unreal — Door Types</h4>
+          <p class="text-sm text-gray-400">Three door systems: one-way, two-way and physics-based doors (push/pull, handle interactions).</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Unreal — Third Person Template</h4>
+          <p class="text-sm text-gray-400">Third-person template with lock-on, strafing and Animation Blend Tree for smooth walk→sprint→stop transitions.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Unity — Chess Template</h4>
+          <p class="text-sm text-gray-400">Turn-based chess prototype with move highlighting; gameplay rules implemented but piece movement still pending.</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6">
+          <h4 class="font-display text-lg text-white mb-2">Unity — FPS Camera</h4>
+          <p class="text-sm text-gray-400">Camera rig prototype under development (incomplete).</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SKILLS ===== -->
   <section id="skills" class="relative py-24">
     <div class="max-w-7xl mx-auto px-6">
@@ -789,7 +825,7 @@
             <div class="fade-up stagger-1">
               <div class="flex justify-between mb-2">
                 <span class="text-sm font-medium tracking-wide">Godot / GDScript</span>
-                <span class="text-sm text-[#E30613]">75%</span>
+                <span class="text-sm text-[#E30613]">70%</span>
               </div>
               <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
                 <div class="skill-bar-fill h-full bg-gradient-to-r from-[#E30613] to-[#f87171] rounded-full"
@@ -799,7 +835,7 @@
 
             <div class="fade-up stagger-2">
               <div class="flex justify-between mb-2">
-                <span class="text-sm font-medium tracking-wide">Unreal Engine / Blueprint</span>
+                <span class="text-sm font-medium tracking-wide">Unreal Engine / Blueprint / C++</span>
                 <span class="text-sm text-[#E30613]">45%</span>
               </div>
               <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
@@ -811,22 +847,22 @@
             <div class="fade-up stagger-3">
               <div class="flex justify-between mb-2">
                 <span class="text-sm font-medium tracking-wide">Unity / C#</span>
-                <span class="text-sm text-[#E30613]">30%</span>
+                <span class="text-sm text-[#E30613]">20%</span>
               </div>
               <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
                 <div class="skill-bar-fill h-full bg-gradient-to-r from-[#E30613] to-[#f87171] rounded-full"
-                  style="--fill-width: 30%"></div>
+                  style="--fill-width: 20%"></div>
               </div>
             </div>
 
             <div class="fade-up stagger-4">
               <div class="flex justify-between mb-2">
                 <span class="text-sm font-medium tracking-wide">FPS / TPS Controller Systems</span>
-                <span class="text-sm text-[#E30613]">80%</span>
+                <span class="text-sm text-[#E30613]">65%</span>
               </div>
               <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
                 <div class="skill-bar-fill h-full bg-gradient-to-r from-[#E30613] to-[#f87171] rounded-full"
-                  style="--fill-width: 80%"></div>
+                  style="--fill-width: 65%"></div>
               </div>
             </div>
 
@@ -1375,11 +1411,11 @@
 
           <!-- Socials -->
           <div class="fade-up stagger-6 flex gap-4 mt-10">
-            <a href="#"
+            <a href="https://github.com/RamaSridhrut570" target="_blank" rel="noopener"
               class="w-10 h-10 border border-white/10 rounded-sm flex items-center justify-center text-gray-400 hover:bg-[#E30613] hover:text-white hover:border-[#E30613] transition-all duration-300">
               <iconify-icon icon="lucide:github" class="text-lg"></iconify-icon>
             </a>
-            <a href="#"
+            <a href="https://www.linkedin.com/in/pisupati-rama-sridhrut/" target="_blank" rel="noopener"
               class="w-10 h-10 border border-white/10 rounded-sm flex items-center justify-center text-gray-400 hover:bg-[#E30613] hover:text-white hover:border-[#E30613] transition-all duration-300">
               <iconify-icon icon="simple-icons:linkedin" class="text-lg"></iconify-icon>
             </a>
@@ -1454,10 +1490,10 @@
           with passion and too much coffee.</p>
         <div class="flex items-center gap-4">
           <div class="flex gap-4">
-            <a href="#" class="text-gray-600 hover:text-[#E30613] transition-colors duration-300">
+            <a href="https://github.com/RamaSridhrut570" target="_blank" rel="noopener" class="text-gray-600 hover:text-[#E30613] transition-colors duration-300">
               <iconify-icon icon="lucide:github" class="text-lg"></iconify-icon>
             </a>
-            <a href="#" class="text-gray-600 hover:text-[#E30613] transition-colors duration-300">
+            <a href="https://www.linkedin.com/in/pisupati-rama-sridhrut/" target="_blank" rel="noopener" class="text-gray-600 hover:text-[#E30613] transition-colors duration-300">
               <iconify-icon icon="simple-icons:linkedin" class="text-lg"></iconify-icon>
             </a>
             <a href="https://a-m-a-r-a-m.itch.io/" target="_blank" rel="noopener" class="text-gray-600 hover:text-[#E30613] transition-colors duration-300">
@@ -1593,15 +1629,30 @@
     });
 
     // ===== Smooth scroll offset =====
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    (function() {
+      const navbarEl = document.getElementById('navbar');
+      const getNavHeight = () => (navbarEl ? navbarEl.getBoundingClientRect().height : 0);
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (!href || href === '#') return;
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+
+          const offset = 12; // small extra spacing
+          const top = target.getBoundingClientRect().top + window.pageYOffset - getNavHeight() - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+
+          // Close mobile menu if open
+          const mobileMenu = document.getElementById('mobileMenu');
+          if (mobileMenu && mobileMenu.classList.contains('open')) {
+            if (typeof closeMenu === 'function') closeMenu();
+          }
+        });
       });
-    });
+    })();
   </script>
 
 </body>

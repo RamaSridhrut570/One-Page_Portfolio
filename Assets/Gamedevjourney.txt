@@ -1,0 +1,45 @@
+On Godot:
+
+(1) FPP controller with God of war axe mechanic, Portals from Portal by valve, Time slowdown just for the player, Wall climb, wall slide(wall clinging run or just sticking and gravity on. Like wall run), Double jump, wall jump, sprinting, walking, head bob, aiming, crosshair.
+
+(2) FPP controller with the blast to make holes in voxel ground. Charge attack to pierce. Make voxel spheres. super hero powers with a megabonk like enemies following you everywhere algorithm.
+
+(3) FPP horror demo: picking up objects and placing them. Light switch, Door open-close. Area triggers to trigger the story parts.
+
+(4) Doom like shooters: Rotoscoped textures as enemies, 2D textures in the 3D. Another one - Zombat shooter remix from Brackey's tutorial, I gave my own twist to the game.
+
+(5) Game called "Prisma": It was made in the Brackey's game jam. planned was 7 stages, but ended up doing it in 3 stages. Phases of life - and gripping storytelling with my voice acting like Kratos's voice. Parkouring using the earlier explained controller. I got the 344th rank in overall and 146th in audio category.
+
+(6) TPP controller: Animation management, State based controller, jump, double jump, roll, fly mode, FoV transitions.
+
+(7) UI based games: drag and drop the text on two sides - truth or lie - detective game with storytelling. Another one is a game based on AI and avoiding procrastination, which gives tasks to do on the computers itself with 4th wall breaking interaction. This was another Brackey's Game jam submission which was my first game jam - 669th overall and 70th in innovation category.
+
+(8) 2D games: Game named "Omb" - drag and shoot mechanic with probability based outcome on door selection. Game named "In the End" - Mini Jam submission #52nd rank - top down shooter, enemies following you, wave like system, dash like mechanic, theme - Toxic, storytelling. Another one is a remake of the Soccer Stars football puck gameplay, turn based.
+
+(9) Ongoing project: Operating System using Godot
+
+Ongoing Project: a (1), (2), (5) - will be continued later. The game with God of war Mechanic and portals is a part of a big trilogy project.
+
+
+On Unreal Engine:
+(1) I made a FPS Horror game template with Stamina and sprint system, flashlight. Using blueprint.
+(2) I made three types of doors,
+	- One way door: Opens to one side, push from side, pull from the other.
+	- Two way door: Opens to both sides, push or pull on both side.
+	- Physics based door: The player can go through by pushing or grabbing the handle of the door, from both sides.
+(3) Third person Template, lock on system, with strafing. Using AnimationBlendtree implemented the sprint or walk to stop, sprinting, crouching.
+
+On Unity:
+(1) Chess template with move Highlighting when clicked on the piece, turn based. No movement yet.
+(2) FPS Camera system - incomplete
+
+
+
+
+And also in learning the other engines, I donot want to jump directly into 3D third person which is most difficult one. It is Ok if it takes time. I want to learn my basics in C#, C++ too. I have been doing GDScript, and I donot know it too well although the amount of projects I did are few. 
+
+
+
+The scope is too big. I know that, I decided on that considering somethings.
+
+The first game would be made in Godot. The second and third games would be made in Unity or Unreal based on what I learn until then. It is a long shot plan, obviously. Presently, I am planning to work on the 1st game in Godot little by little, also the mechanics were slowly made. I made the UI parts in different projects and I would blend every learning into one.
