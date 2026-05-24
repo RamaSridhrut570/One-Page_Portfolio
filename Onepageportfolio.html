@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pisupati Rama Sridhrut | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #050505;
+      color: #fff;
+    }
+
+    .font-display {
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .glass-panel {
+      background: rgba(26, 26, 26, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-panel-strong {
+      background: rgba(26, 26, 26, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideRight {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(227, 6, 19, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 40px rgba(227, 6, 19, 0.6);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes scanline {
+      0% {
+        transform: translateY(-100%);
+      }
+
+      100% {
+        transform: translateY(100%);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    .slide-right {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .slide-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .stagger-1 {
+      transition-delay: 0.1s;
+    }
+
+    .stagger-2 {
+      transition-delay: 0.2s;
+    }
+
+    .stagger-3 {
+      transition-delay: 0.3s;
+    }
+
+    .stagger-4 {
+      transition-delay: 0.4s;
+    }
+
+    .stagger-5 {
+      transition-delay: 0.5s;
+    }
+
+    .stagger-6 {
+      transition-delay: 0.6s;
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #E30613, #f87171);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-hover {
+      transition: all 0.4s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-4px);
+      border-color: rgba(227, 6, 19, 0.3);
+    }
+
+    .project-card .project-overlay {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-card:hover .project-img {
+      transform: scale(1.08);
+    }
+
+    .project-img {
+      transition: transform 0.6s ease;
+    }
+
+    .skill-bar-fill {
+      width: 0;
+      transition: width 1.2s ease-out;
+    }
+
+    .skill-bar-fill.visible {
+      width: var(--fill-width);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #E30613;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #E30613;
+      border-radius: 3px;
+    }
+
+    .scanline-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.03) 2px,
+          rgba(0, 0, 0, 0.03) 4px);
+    }
+
+    section[id] {
+      scroll-margin-top: 80px;
+    }
+
+    .toast {
+      animation: fadeUp 0.4s ease-out forwards;
+    }
+
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar"
+    class="fixed top-0 left-0 right-0 z-50 glass-panel-strong h-20 flex items-center transition-all duration-300">
+    <div class="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
+      <a href="#hero" class="font-display text-2xl font-500 tracking-wide flex items-center gap-2">
+        <span
+          class="w-8 h-8 bg-[#E30613] rounded flex items-center justify-center text-white text-sm font-bold">RS</span>
+        <span>Rama.</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about"
+          class="nav-link text-sm font-normal tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors duration-300">About</a>
+        <a href="#projects"
+          class="nav-link text-sm font-normal tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors duration-300">Projects</a>
+        <a href="#skills"
+          class="nav-link text-sm font-normal tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors duration-300">Skills</a>
+        <a href="#experience"
+          class="nav-link text-sm font-normal tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors duration-300">Experience</a>
+        <a href="#journey"
+          class="nav-link text-sm font-normal tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors duration-300">Journey</a>
+        <a href="#what-people-say"
+          class="nav-link text-sm font-normal tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors duration-300">Testimonials</a>
+        <a href="Assets/Rama_Resume.pdf" download
+          class="nav-link text-sm font-normal tracking-wide uppercase text-gray-300 hover:bg-white/5 hover:text-[#E30613] px-4 py-2 border border-white/10 rounded transition-colors duration-300 inline-flex items-center gap-2">Resume
+          <iconify-icon icon="lucide:download"></iconify-icon>
+        </a>
+        <a href="#contact"
+          class="bg-[#E30613] hover:bg-red-700 text-white text-sm font-medium tracking-widest uppercase px-6 py-3 transition-colors duration-300">Hire
+          Me</a>
+      </div>
+
+      <button id="menuBtn" class="md:hidden text-white text-2xl">
+        <iconify-icon icon="lucide:menu"></iconify-icon>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full z-[60] glass-panel-strong flex flex-col p-8">
+    <button id="closeMenuBtn" class="self-end text-white text-2xl mb-10 hover:text-[#E30613] transition-colors">
+      <iconify-icon icon="lucide:x"></iconify-icon>
+    </button>
+    <div class="flex flex-col gap-6">
+      <a href="#about"
+        class="mobile-link text-lg font-display tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors">About</a>
+      <a href="#projects"
+        class="mobile-link text-lg font-display tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors">Projects</a>
+      <a href="#skills"
+        class="mobile-link text-lg font-display tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors">Skills</a>
+      <a href="#experience"
+        class="mobile-link text-lg font-display tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors">Experience</a>
+      <a href="#journey"
+        class="mobile-link text-lg font-display tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors">Journey</a>
+      <a href="#what-people-say"
+        class="mobile-link text-lg font-display tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors">Testimonials</a>
+      <a href="Assets/Rama_Resume.pdf" download
+        class="mobile-link text-lg font-display tracking-wide uppercase text-gray-300 hover:text-[#E30613] transition-colors">Resume</a>
+      <a href="#contact"
+        class="mt-4 bg-[#E30613] hover:bg-red-700 text-white text-sm font-medium tracking-widest uppercase px-6 py-3 text-center transition-colors duration-300">Hire
+        Me</a>
+    </div>
+  </div>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/60 z-[55] hidden"></div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 50%, rgba(227,6,19,0.18) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(227,6,19,0.08) 0%, transparent 50%), #050505;"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="scanline-overlay"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto w-full px-6">
+      <div class="max-w-3xl" style="animation: fadeUp 1s ease-out forwards">
+        <p class="text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+          <span class="inline-flex items-center gap-2">
+            <span class="w-8 h-px bg-[#E30613]"></span>
+            Game Developer &middot; Robotics Engineer &middot; Electronics Engineer
+          </span>
+        </p>
+        <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-500 tracking-tight leading-[1.1] mb-6">
+          Pisupati<br>
+          <span class="gradient-text">Rama Sridhrut</span><br>
+
+        </h1>
+        <p class="text-base font-light leading-relaxed text-gray-400 max-w-lg mb-10">
+          I build fun, memorable, and highly enjoyable games. Currently pursuing my engineering degree, I like to
+          implement innovative ideas
+          to craft powerful interactive experiences.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#projects"
+            class="bg-[#E30613] hover:bg-red-700 text-white text-sm font-medium tracking-widest uppercase px-8 py-4 transition-colors duration-300 inline-flex items-center gap-2">
+            View My Work
+            <iconify-icon icon="lucide:arrow-right"></iconify-icon>
+          </a>
+          <a href="#about"
+            class="border border-white/20 hover:border-[#E30613] hover:text-[#E30613] text-white text-sm font-medium tracking-widest uppercase px-8 py-4 transition-all duration-300">
+            About Me
+          </a>
+          <a href="#what-people-say"
+            class="border border-white/20 hover:bg-[#E30613] hover:text-white text-white text-sm font-medium tracking-widest uppercase px-6 py-4 transition-all duration-300 inline-flex items-center gap-2">
+            Read Testimonials
+            <iconify-icon icon="lucide:message-square"></iconify-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      style="animation: float 3s ease-in-out infinite">
+      <span class="text-xs tracking-widest uppercase text-gray-500">Scroll</span>
+      <iconify-icon icon="lucide:arrow-down" class="text-[#E30613]"></iconify-icon>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="relative py-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Image -->
+        <div class="fade-up relative">
+          <div class="relative overflow-hidden rounded-sm">
+            <img id="profilePhoto" alt="Pisupati Rama Sridhrut"
+              class="w-full h-[500px] object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
+              loading="lazy" style="display:none; aspect-ratio:3/4;">
+
+            <div id="photoPlaceholder" class="w-full h-[500px] flex items-center justify-center"
+              style="background: linear-gradient(135deg, #0f0f0f 0%, #1a0a0a 50%, #0f0f0f 100%);">
+              <div class="text-center">
+                <div class="w-24 h-24 rounded-full bg-[#E30613]/20 border border-[#E30613]/30 flex items-center justify-center mx-auto mb-4">
+                  <iconify-icon icon="lucide:user" class="text-[#E30613] text-4xl"></iconify-icon>
+                </div>
+                <p class="text-xs tracking-widest uppercase text-gray-600">Add your photo here</p>
+              </div>
+            </div>
+
+            <script>
+              // Try several common filenames to be resilient to different names
+              (function() {
+                const candidates = [
+                  'Assets/profilephoto.jpg', // existing file in repo (case-sensitive on some servers)
+                  'assets/profile.jpg', 'assets/photo.jpg', 'assets/profile.png', 'assets/photo.png', 'assets/photo.webp',
+                  'Assets/profilephoto.png', 'Assets/profilephoto.webp'
+                ];
+                const img = document.getElementById('profilePhoto');
+                const placeholder = document.getElementById('photoPlaceholder');
+
+                function tryNext() {
+                  if (candidates.length === 0) return; // leave placeholder visible
+                  const next = candidates.shift();
+                  img.src = next;
+                  img.onload = () => {
+                    img.style.display = '';
+                    placeholder.style.display = 'none';
+                  };
+                  img.onerror = () => {
+                    img.onload = img.onerror = null;
+                    tryNext();
+                  };
+                }
+
+                tryNext();
+              })();
+            </script>
+            <div class="absolute bottom-0 left-0 right-0 h-1/3"
+              style="background: linear-gradient(to top, #050505, transparent)"></div>
+          </div>
+          <!-- Floating badge -->
+          <div class="absolute -bottom-4 -right-4 md:bottom-8 md:right-8 glass-panel rounded-sm p-5"
+            style="animation: pulseGlow 3s ease-in-out infinite">
+            <p class="font-display text-3xl font-500 gradient-text">3+</p>
+            <p class="text-xs tracking-widest uppercase text-gray-400">Years Exp</p>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div>
+          <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+            <span class="inline-flex items-center gap-2">
+              <span class="w-8 h-px bg-[#E30613]"></span>
+              About Me
+            </span>
+          </p>
+          <h2 class="fade-up stagger-1 font-display text-3xl md:text-5xl font-500 tracking-tight leading-tight mb-6">
+            STUDENT FIRST,<br>
+            <span class="gradient-text">DEVELOPER SECOND</span>
+          </h2>
+          <p class="fade-up stagger-2 text-base font-light leading-relaxed text-gray-400 mb-6">
+            Hello! I'm Pisupati Rama Sridhrut, a 3rd-year Electrical and Electronics Engineering student at MIT Manipal
+            and a passionate game developer with a deep love for crafting elegant and very strong narrative games.
+          </p>
+          <p class="fade-up stagger-3 text-base font-light leading-relaxed text-gray-400 mb-8">
+            I enjoy working across all aspects of game development, from engineering complex systems and designing
+            innovative gameplay mechanics to creating soulful audio tracks.
+          </p>
+
+          <!-- Stats -->
+          <div class="fade-up stagger-4 grid grid-cols-3 gap-6 mb-8">
+            <div class="text-center md:text-left">
+              <p class="font-display text-3xl font-500 gradient-text">20+</p>
+              <p class="text-xs tracking-widest uppercase text-gray-500 mt-1">Projects Built</p>
+            </div>
+            <div class="text-center md:text-left">
+              <p class="font-display text-3xl font-500 gradient-text">3</p>
+              <p class="text-xs tracking-widest uppercase text-gray-500 mt-1">Game Jams</p>
+            </div>
+            <div class="text-center md:text-left">
+              <p class="font-display text-3xl font-500 gradient-text">3</p>
+              <p class="text-xs tracking-widest uppercase text-gray-500 mt-1">Engines</p>
+            </div>
+          </div>
+
+          <a href="#contact"
+            class="fade-up stagger-5 inline-flex items-center gap-2 text-[#E30613] text-sm font-medium tracking-widest uppercase hover:gap-4 transition-all duration-300">
+            Let's Talk
+            <iconify-icon icon="lucide:arrow-right"></iconify-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="relative py-24" style="background: #0a0a0a">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+          <span class="inline-flex items-center gap-2">
+            <span class="w-8 h-px bg-[#E30613]"></span>
+            Featured Projects
+            <span class="w-8 h-px bg-[#E30613]"></span>
+          </span>
+        </p>
+        <h2 class="fade-up stagger-1 font-display text-3xl md:text-5xl font-500 tracking-tight leading-tight">
+          GAMES I'VE <span class="gradient-text">BUILT</span>
+        </h2>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="fade-up stagger-2 flex flex-wrap justify-center gap-3 mb-12">
+        <button
+          class="filter-btn active bg-[#E30613] text-white text-xs font-medium tracking-widest uppercase px-5 py-2 transition-all duration-300"
+          data-filter="all">All</button>
+        <button
+          class="filter-btn border border-white/10 text-gray-400 hover:text-white hover:border-[#E30613] text-xs font-medium tracking-widest uppercase px-5 py-2 transition-all duration-300"
+          data-filter="godot">Godot</button>
+        <button
+          class="filter-btn border border-white/10 text-gray-400 hover:text-white hover:border-[#E30613] text-xs font-medium tracking-widest uppercase px-5 py-2 transition-all duration-300"
+          data-filter="unreal">Unreal Engine</button>
+
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Project 1: Prisma -->
+        <a href="https://a-m-a-r-a-m.itch.io/prisma" target="_blank" rel="noopener"
+          class="fade-up stagger-1 project-card card-hover glass-panel rounded-sm overflow-hidden group cursor-pointer block no-underline"
+          data-category="godot">
+          <div class="relative h-56 overflow-hidden">
+            <div class="project-img w-full h-full" style="background: linear-gradient(135deg, #1a0505 0%, #3d0a0a 40%, #0a0a1a 100%); display:flex; align-items:center; justify-content:center;">
+              <iconify-icon icon="lucide:triangle" class="text-[#E30613] opacity-30" style="font-size:5rem"></iconify-icon>
+            </div>
+            <div class="project-overlay absolute inset-0 bg-[#E30613]/80 flex items-center justify-center">
+              <div class="text-center">
+                <iconify-icon icon="simple-icons:itchdotio" class="text-4xl text-white mb-2"></iconify-icon>
+                <p class="text-sm font-medium tracking-widest uppercase text-white">Play on itch.io</p>
+              </div>
+            </div>
+            <div class="absolute top-3 left-3 bg-[#E30613] text-white text-[10px] font-medium tracking-widest uppercase px-3 py-1">Game Jam</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-500 tracking-tight mb-2 text-white">Prisma</h3>
+            <p class="text-sm font-light text-gray-400 mb-4">Brackey's Game Jam — parkour narrative through phases of life with Kratos-style voice acting. Ranked 344th overall, 146th in Audio.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Godot</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">GDScript</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Narrative</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 2: FPP Controller / Garnok -->
+        <div
+          class="fade-up stagger-2 project-card card-hover glass-panel rounded-sm overflow-hidden group cursor-pointer"
+          data-category="godot">
+          <div class="relative h-56 overflow-hidden">
+            <div class="project-img w-full h-full" style="background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2a 40%, #2a0a1a 100%); display:flex; align-items:center; justify-content:center;">
+              <iconify-icon icon="lucide:axe" class="text-[#E30613] opacity-30" style="font-size:5rem"></iconify-icon>
+            </div>
+            <div class="project-overlay absolute inset-0 bg-[#E30613]/80 flex items-center justify-center">
+              <div class="text-center">
+                <iconify-icon icon="lucide:hammer" class="text-4xl text-white mb-2"></iconify-icon>
+                <p class="text-sm font-medium tracking-widest uppercase text-white">In Development</p>
+              </div>
+            </div>
+            <div class="absolute top-3 left-3 bg-[#E30613] text-white text-[10px] font-medium tracking-widest uppercase px-3 py-1">Ongoing</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-500 tracking-tight mb-2">Garnok: The Realm of Banished</h3>
+            <p class="text-sm font-light text-gray-400 mb-4">God of War axe mechanic, Portal-style portals, time slowdown, wall climbing, double jump — Trilogy Part 1. Active development.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Godot</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">FPS</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Trilogy Pt.1</span>
+            </div>
+            <div class="mt-3">
+              <a href="https://bsky.app/profile/amaram-studio.bsky.social/post/3mltvgecjds2w" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-2 text-sm font-medium text-[#E30613] hover:underline">
+                <iconify-icon icon="simple-icons:bluesky" class="text-base"></iconify-icon>
+                View Garnok post on Bluesky
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: In the End -->
+        <a href="https://a-m-a-r-a-m.itch.io/in-the-end" target="_blank" rel="noopener"
+          class="fade-up stagger-3 project-card card-hover glass-panel rounded-sm overflow-hidden group cursor-pointer block no-underline"
+          data-category="godot">
+          <div class="relative h-56 overflow-hidden">
+            <div class="project-img w-full h-full" style="background: linear-gradient(135deg, #0a1a0a 0%, #0a2a0a 40%, #1a1a0a 100%); display:flex; align-items:center; justify-content:center;">
+              <iconify-icon icon="lucide:crosshair" class="text-[#E30613] opacity-30" style="font-size:5rem"></iconify-icon>
+            </div>
+            <div class="project-overlay absolute inset-0 bg-[#E30613]/80 flex items-center justify-center">
+              <div class="text-center">
+                <iconify-icon icon="simple-icons:itchdotio" class="text-4xl text-white mb-2"></iconify-icon>
+                <p class="text-sm font-medium tracking-widest uppercase text-white">Play on itch.io</p>
+              </div>
+            </div>
+            <div class="absolute top-3 left-3 bg-[#E30613] text-white text-[10px] font-medium tracking-widest uppercase px-3 py-1">Game Jam</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-500 tracking-tight mb-2 text-white">In the End</h3>
+            <p class="text-sm font-light text-gray-400 mb-4">Mini Jam — #52 overall. Top-down shooter: lone cell vs. toxic wave invaders, dash mechanic, enemy AI, narrative.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Godot</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">2D</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Shooter</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 4: TaskMaster.exe -->
+        <a href="https://a-m-a-r-a-m.itch.io/taskmasterexe" target="_blank" rel="noopener"
+          class="fade-up stagger-4 project-card card-hover glass-panel rounded-sm overflow-hidden group cursor-pointer block no-underline"
+          data-category="godot">
+          <div class="relative h-56 overflow-hidden">
+            <div class="project-img w-full h-full" style="background: linear-gradient(135deg, #0a0a1a 0%, #0a1a2a 40%, #1a0a1a 100%); display:flex; align-items:center; justify-content:center;">
+              <iconify-icon icon="lucide:monitor" class="text-[#E30613] opacity-30" style="font-size:5rem"></iconify-icon>
+            </div>
+            <div class="project-overlay absolute inset-0 bg-[#E30613]/80 flex items-center justify-center">
+              <div class="text-center">
+                <iconify-icon icon="simple-icons:itchdotio" class="text-4xl text-white mb-2"></iconify-icon>
+                <p class="text-sm font-medium tracking-widest uppercase text-white">Play on itch.io</p>
+              </div>
+            </div>
+            <div class="absolute top-3 left-3 bg-[#E30613] text-white text-[10px] font-medium tracking-widest uppercase px-3 py-1">Game Jam</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-500 tracking-tight mb-2 text-white">TaskMaster.exe</h3>
+            <p class="text-sm font-light text-gray-400 mb-4">Brackey's Game Jam — 4th-wall-breaking AI procrastination sim that assigns tasks on the actual desktop. Ranked 70th in Innovation.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Godot</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">UI/UX</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Innovation</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 5: Unreal Horror Template -->
+        <div
+          class="fade-up stagger-5 project-card card-hover glass-panel rounded-sm overflow-hidden group cursor-pointer"
+          data-category="unreal">
+          <div class="relative h-56 overflow-hidden">
+            <div class="project-img w-full h-full" style="background: linear-gradient(135deg, #0f0505 0%, #200808 40%, #0a0505 100%); display:flex; align-items:center; justify-content:center;">
+              <iconify-icon icon="lucide:flashlight" class="text-[#E30613] opacity-30" style="font-size:5rem"></iconify-icon>
+            </div>
+            <div class="project-overlay absolute inset-0 bg-[#E30613]/80 flex items-center justify-center">
+              <div class="text-center">
+                <iconify-icon icon="lucide:play-circle" class="text-4xl text-white mb-2"></iconify-icon>
+                <p class="text-sm font-medium tracking-widest uppercase text-white">View Details</p>
+              </div>
+            </div>
+            <div class="absolute top-3 left-3 bg-[#E30613] text-white text-[10px] font-medium tracking-widest uppercase px-3 py-1">Unreal</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-500 tracking-tight mb-2">FPS Horror Template</h3>
+            <p class="text-sm font-light text-gray-400 mb-4">Unreal Engine horror template — stamina system, sprint, flashlight, and three physics-accurate door types (one-way, two-way, physics-based handle).</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Unreal</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Blueprint</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Horror</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: Omb -->
+        <a href="https://a-m-a-r-a-m.itch.io/omb" target="_blank" rel="noopener"
+          class="fade-up stagger-6 project-card card-hover glass-panel rounded-sm overflow-hidden group cursor-pointer block no-underline"
+          data-category="godot">
+          <div class="relative h-56 overflow-hidden">
+            <div class="project-img w-full h-full" style="background: linear-gradient(135deg, #0a1a1a 0%, #0a2020 40%, #1a1a0a 100%); display:flex; align-items:center; justify-content:center;">
+              <iconify-icon icon="lucide:bomb" class="text-[#E30613] opacity-30" style="font-size:5rem"></iconify-icon>
+            </div>
+            <div class="project-overlay absolute inset-0 bg-[#E30613]/80 flex items-center justify-center">
+              <div class="text-center">
+                <iconify-icon icon="simple-icons:itchdotio" class="text-4xl text-white mb-2"></iconify-icon>
+                <p class="text-sm font-medium tracking-widest uppercase text-white">Play on itch.io</p>
+              </div>
+            </div>
+            <div class="absolute top-3 left-3 bg-[#E30613] text-white text-[10px] font-medium tracking-widest uppercase px-3 py-1">2D Puzzle</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-500 tracking-tight mb-2 text-white">Omb</h3>
+            <p class="text-sm font-light text-gray-400 mb-4">Drag-and-shoot puzzle game — open doors to find treats or bombs. Probability-based outcomes, risk/reward decision loop.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Godot</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">2D</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Puzzle</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 7: Truth or Lie -->
+        <a href="https://a-m-a-r-a-m.itch.io/truth-or-lie" target="_blank" rel="noopener"
+          class="fade-up stagger-1 project-card card-hover glass-panel rounded-sm overflow-hidden group cursor-pointer block no-underline"
+          data-category="godot">
+          <div class="relative h-56 overflow-hidden">
+            <div class="project-img w-full h-full" style="background: linear-gradient(135deg, #1a1a0a 0%, #2a200a 40%, #0a0a1a 100%); display:flex; align-items:center; justify-content:center;">
+              <iconify-icon icon="lucide:scale" class="text-[#E30613] opacity-30" style="font-size:5rem"></iconify-icon>
+            </div>
+            <div class="project-overlay absolute inset-0 bg-[#E30613]/80 flex items-center justify-center">
+              <div class="text-center">
+                <iconify-icon icon="simple-icons:itchdotio" class="text-4xl text-white mb-2"></iconify-icon>
+                <p class="text-sm font-medium tracking-widest uppercase text-white">Play on itch.io</p>
+              </div>
+            </div>
+            <div class="absolute top-3 left-3 bg-[#E30613] text-white text-[10px] font-medium tracking-widest uppercase px-3 py-1">Interactive Fiction</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-500 tracking-tight mb-2 text-white">Truth or Lie</h3>
+            <p class="text-sm font-light text-gray-400 mb-4">Detective drag-and-drop narrative — sort evidence as truth or lie. Justice and guilt blur. UI-driven storytelling experiment.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Godot</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Narrative</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">UI</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 8: IT GROWS -->
+        <a href="https://a-m-a-r-a-m.itch.io/it-grows" target="_blank" rel="noopener"
+          class="fade-up stagger-2 project-card card-hover glass-panel rounded-sm overflow-hidden group cursor-pointer block no-underline"
+          data-category="godot">
+          <div class="relative h-56 overflow-hidden">
+            <div class="project-img w-full h-full" style="background: linear-gradient(135deg, #050a1a 0%, #0a1020 40%, #050505 100%); display:flex; align-items:center; justify-content:center;">
+              <iconify-icon icon="lucide:snowflake" class="text-[#E30613] opacity-30" style="font-size:5rem"></iconify-icon>
+            </div>
+            <div class="project-overlay absolute inset-0 bg-[#E30613]/80 flex items-center justify-center">
+              <div class="text-center">
+                <iconify-icon icon="simple-icons:itchdotio" class="text-4xl text-white mb-2"></iconify-icon>
+                <p class="text-sm font-medium tracking-widest uppercase text-white">Play on itch.io</p>
+              </div>
+            </div>
+            <div class="absolute top-3 left-3 bg-[#E30613] text-white text-[10px] font-medium tracking-widest uppercase px-3 py-1">Survival · Demo</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-500 tracking-tight mb-2 text-white">IT GROWS</h3>
+            <p class="text-sm font-light text-gray-400 mb-4">Tense survival demo — survive the cold, escape the unknown. Atmospheric horror with environmental threat mechanics.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Godot</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Survival</span>
+              <span class="text-[10px] tracking-wider uppercase text-gray-500 border border-white/10 px-2 py-1">Horror</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="relative py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- Left: Skills Bars -->
+        <div>
+          <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+            <span class="inline-flex items-center gap-2">
+              <span class="w-8 h-px bg-[#E30613]"></span>
+              Technical Skills
+            </span>
+          </p>
+          <h2 class="fade-up stagger-1 font-display text-3xl md:text-5xl font-500 tracking-tight leading-tight mb-10">
+            MY <span class="gradient-text">TOOLBOX</span>
+          </h2>
+
+          <div class="space-y-6">
+            <div class="fade-up stagger-1">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium tracking-wide">Godot / GDScript</span>
+                <span class="text-sm text-[#E30613]">75%</span>
+              </div>
+              <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-gradient-to-r from-[#E30613] to-[#f87171] rounded-full"
+                  style="--fill-width: 75%"></div>
+              </div>
+            </div>
+
+            <div class="fade-up stagger-2">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium tracking-wide">Unreal Engine / Blueprint</span>
+                <span class="text-sm text-[#E30613]">45%</span>
+              </div>
+              <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-gradient-to-r from-[#E30613] to-[#f87171] rounded-full"
+                  style="--fill-width: 45%"></div>
+              </div>
+            </div>
+
+            <div class="fade-up stagger-3">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium tracking-wide">Unity / C#</span>
+                <span class="text-sm text-[#E30613]">30%</span>
+              </div>
+              <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-gradient-to-r from-[#E30613] to-[#f87171] rounded-full"
+                  style="--fill-width: 30%"></div>
+              </div>
+            </div>
+
+            <div class="fade-up stagger-4">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium tracking-wide">FPS / TPS Controller Systems</span>
+                <span class="text-sm text-[#E30613]">80%</span>
+              </div>
+              <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-gradient-to-r from-[#E30613] to-[#f87171] rounded-full"
+                  style="--fill-width: 80%"></div>
+              </div>
+            </div>
+
+            <div class="fade-up stagger-5">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium tracking-wide">Gameplay Mechanics & AI</span>
+                <span class="text-sm text-[#E30613]">70%</span>
+              </div>
+              <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-gradient-to-r from-[#E30613] to-[#f87171] rounded-full"
+                  style="--fill-width: 70%"></div>
+              </div>
+            </div>
+
+            <div class="fade-up stagger-6">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium tracking-wide">Narrative Design & Voice Acting</span>
+                <span class="text-sm text-[#E30613]">65%</span>
+              </div>
+              <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                <div class="skill-bar-fill h-full bg-gradient-to-r from-[#E30613] to-[#f87171] rounded-full"
+                  style="--fill-width: 65%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Tool Grid -->
+        <div>
+          <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+            <span class="inline-flex items-center gap-2">
+              <span class="w-8 h-px bg-[#E30613]"></span>
+              Tools & Frameworks
+            </span>
+          </p>
+          <h2 class="fade-up stagger-1 font-display text-3xl md:text-5xl font-500 tracking-tight leading-tight mb-10">
+            DAILY <span class="gradient-text">DRIVERS</span>
+          </h2>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div class="fade-up stagger-1 glass-panel card-hover rounded-sm p-5 text-center">
+              <iconify-icon icon="simple-icons:unrealengine" class="text-3xl text-gray-400 mb-2"></iconify-icon>
+              <p class="text-xs tracking-wider uppercase text-gray-400">Unreal</p>
+            </div>
+            <div class="fade-up stagger-2 glass-panel card-hover rounded-sm p-5 text-center">
+              <iconify-icon icon="simple-icons:unity" class="text-3xl text-gray-400 mb-2"></iconify-icon>
+              <p class="text-xs tracking-wider uppercase text-gray-400">Unity</p>
+            </div>
+            <div class="fade-up stagger-3 glass-panel card-hover rounded-sm p-5 text-center">
+              <iconify-icon icon="simple-icons:godotengine" class="text-3xl text-gray-400 mb-2"></iconify-icon>
+              <p class="text-xs tracking-wider uppercase text-gray-400">Godot</p>
+            </div>
+            <div class="fade-up stagger-4 glass-panel card-hover rounded-sm p-5 text-center">
+              <iconify-icon icon="simple-icons:blender" class="text-3xl text-gray-400 mb-2"></iconify-icon>
+              <p class="text-xs tracking-wider uppercase text-gray-400">Blender</p>
+            </div>
+            <div class="fade-up stagger-5 glass-panel card-hover rounded-sm p-5 text-center">
+              <iconify-icon icon="simple-icons:git" class="text-3xl text-gray-400 mb-2"></iconify-icon>
+              <p class="text-xs tracking-wider uppercase text-gray-400">Git</p>
+            </div>
+            <div class="fade-up stagger-6 glass-panel card-hover rounded-sm p-5 text-center">
+              <iconify-icon icon="simple-icons:visualstudiocode" class="text-3xl text-gray-400 mb-2"></iconify-icon>
+              <p class="text-xs tracking-wider uppercase text-gray-400">VS Code</p>
+            </div>
+            <div class="fade-up stagger-1 glass-panel card-hover rounded-sm p-5 text-center">
+              <iconify-icon icon="simple-icons:cplusplus" class="text-3xl text-gray-400 mb-2"></iconify-icon>
+              <p class="text-xs tracking-wider uppercase text-gray-400">C++</p>
+            </div>
+            <div class="fade-up stagger-2 glass-panel card-hover rounded-sm p-5 text-center">
+              <iconify-icon icon="simple-icons:csharp" class="text-3xl text-gray-400 mb-2"></iconify-icon>
+              <p class="text-xs tracking-wider uppercase text-gray-400">C#</p>
+            </div>
+            <div class="fade-up stagger-3 glass-panel card-hover rounded-sm p-5 text-center">
+              <iconify-icon icon="simple-icons:itchdotio" class="text-3xl text-gray-400 mb-2"></iconify-icon>
+              <p class="text-xs tracking-wider uppercase text-gray-400">itch.io</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="relative py-24" style="background: #0a0a0a">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+          <span class="inline-flex items-center gap-2">
+            <span class="w-8 h-px bg-[#E30613]"></span>
+            My Path
+            <span class="w-8 h-px bg-[#E30613]"></span>
+          </span>
+        </p>
+        <h2 class="fade-up stagger-1 font-display text-3xl md:text-5xl font-500 tracking-tight leading-tight">
+          WHERE I'VE <span class="gradient-text">BEEN</span>
+        </h2>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative">
+        <!-- Vertical line -->
+        <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-px"></div>
+
+        <!-- Item 1 -->
+        <div class="fade-up relative flex flex-col md:flex-row md:items-center mb-12">
+          <div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+            <p class="text-xs tracking-widest uppercase text-[#E30613] mb-1">2023 — Present</p>
+            <h3 class="font-display text-xl font-500 tracking-tight mb-1">B.Tech EEE Student</h3>
+            <p class="text-sm text-gray-500 mb-2">MIT Manipal — 3rd Year</p>
+            <p class="text-sm font-light text-gray-400">Pursuing Electrical & Electronics Engineering while building
+              games, participating in game jams, and learning multiple engines (Godot, Unreal, Unity).</p>
+          </div>
+          <div
+            class="absolute left-4 md:left-1/2 w-3 h-3 bg-[#E30613] rounded-full -translate-x-1/2 mt-2 md:mt-0 ring-4 ring-[#0a0a0a]">
+          </div>
+          <div class="md:w-1/2 md:pl-12"></div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="fade-up stagger-1 relative flex flex-col md:flex-row md:items-center mb-12">
+          <div class="md:w-1/2 md:pr-12"></div>
+          <div
+            class="absolute left-4 md:left-1/2 w-3 h-3 bg-[#E30613] rounded-full -translate-x-1/2 mt-2 md:mt-0 ring-4 ring-[#0a0a0a]">
+          </div>
+          <div class="md:w-1/2 md:pl-12 pl-12 md:text-left">
+            <p class="text-xs tracking-widest uppercase text-[#E30613] mb-1">2024 — Present</p>
+            <h3 class="font-display text-xl font-500 tracking-tight mb-1">Game Jam Competitor</h3>
+            <p class="text-sm text-gray-500 mb-2">Brackey's Game Jam & Mini Jam</p>
+            <p class="text-sm font-light text-gray-400">Shipped multiple jam entries — "Prisma" (344th overall, 146th
+              Audio), AI procrastination game (70th Innovation), and "In the End" (52nd overall, Mini Jam).</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="fade-up stagger-2 relative flex flex-col md:flex-row md:items-center mb-12">
+          <div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+            <p class="text-xs tracking-widest uppercase text-[#E30613] mb-1">2022 — Present</p>
+            <h3 class="font-display text-xl font-500 tracking-tight mb-1">Indie Game Developer</h3>
+            <p class="text-sm text-gray-500 mb-2">Self-taught — Godot, Unreal, Unity</p>
+            <p class="text-sm font-light text-gray-400">Built 15+ projects across 3 engines: FPP/TPP controllers, horror
+              demos, 2D arcade games, a Doom-style retro shooter, voxel destruction systems, and an ongoing OS project
+              in Godot.</p>
+          </div>
+          <div
+            class="absolute left-4 md:left-1/2 w-3 h-3 bg-[#E30613] rounded-full -translate-x-1/2 mt-2 md:mt-0 ring-4 ring-[#0a0a0a]">
+          </div>
+          <div class="md:w-1/2 md:pl-12"></div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="fade-up stagger-3 relative flex flex-col md:flex-row md:items-center">
+          <div class="md:w-1/2 md:pr-12"></div>
+          <div
+            class="absolute left-4 md:left-1/2 w-3 h-3 bg-[#E30613] rounded-full -translate-x-1/2 mt-2 md:mt-0 ring-4 ring-[#0a0a0a]">
+          </div>
+          <div class="md:w-1/2 md:pl-12 pl-12 md:text-left">
+            <p class="text-xs tracking-widest uppercase text-[#E30613] mb-1">Future Plans</p>
+            <h3 class="font-display text-xl font-500 tracking-tight mb-1">Trilogy Project</h3>
+            <p class="text-sm text-gray-500 mb-2">Multi-engine Game Series</p>
+            <p class="text-sm font-light text-gray-400">Planning a trilogy: first game in Godot (combining all mechanics learned), second and third in Unreal Engine, building C++ and Blueprint foundations now to make the leap when ready.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ===== GAME DEV JOURNEY ===== -->
+  <section id="journey" class="relative py-24" style="background: #050505">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+          <span class="inline-flex items-center gap-2">
+            <span class="w-8 h-px bg-[#E30613]"></span>
+            My Progress
+            <span class="w-8 h-px bg-[#E30613]"></span>
+          </span>
+        </p>
+        <h2 class="fade-up stagger-1 font-display text-3xl md:text-5xl font-500 tracking-tight leading-tight">
+          GAME DEV <span class="gradient-text">JOURNEY</span>
+        </h2>
+        <p class="fade-up stagger-2 text-sm font-light text-gray-500 mt-4 max-w-lg mx-auto">Everything built across engines — mechanics, systems, experiments. Still going.</p>
+      </div>
+
+      <!-- Engine Tabs -->
+      <div class="fade-up stagger-2 flex flex-wrap justify-center gap-3 mb-10">
+        <button class="journey-tab active-tab bg-[#E30613] text-white text-xs font-medium tracking-widest uppercase px-5 py-2 transition-all duration-300" data-engine="godot">Godot</button>
+        <button class="journey-tab border border-white/10 text-gray-400 hover:text-white hover:border-[#E30613] text-xs font-medium tracking-widest uppercase px-5 py-2 transition-all duration-300" data-engine="unreal">Unreal Engine</button>
+        <button class="journey-tab border border-white/10 text-gray-400 hover:text-white hover:border-[#E30613] text-xs font-medium tracking-widest uppercase px-5 py-2 transition-all duration-300" data-engine="unity">Unity</button>
+        <button class="journey-tab border border-white/10 text-gray-400 hover:text-white hover:border-[#E30613] text-xs font-medium tracking-widest uppercase px-5 py-2 transition-all duration-300" data-engine="future">What's Next</button>
+      </div>
+
+      <!-- Godot Panel -->
+      <div class="journey-panel" id="panel-godot">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div class="fade-up glass-panel card-hover rounded-sm p-6 border-l-2 border-[#E30613]">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:gamepad-2" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">Garnok: The Realm of Banished</h4>
+                <span class="text-[10px] tracking-widest uppercase text-[#E30613] bg-[#E30613]/10 px-2 py-0.5 rounded-sm">Ongoing · Trilogy Pt.1</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">God of War axe mechanic · Portal-style portals · Time slowdown · Wall climb/slide/run · Double & wall jump · Head bob · Sprinting · Aiming · Crosshair · Anchor checkpoint system</p>
+          </div>
+
+          <div class="fade-up stagger-1 glass-panel card-hover rounded-sm p-6 border-l-2 border-[#E30613]">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:zap" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">Voxel Destruction FPP</h4>
+                <span class="text-[10px] tracking-widest uppercase text-[#E30613] bg-[#E30613]/10 px-2 py-0.5 rounded-sm">Ongoing</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Blast holes in voxel terrain · Charge-pierce attack · Voxel sphere generation · Superhero powers · Enemy follow algorithm (Megabonk)</p>
+          </div>
+
+          <div class="fade-up stagger-2 glass-panel card-hover rounded-sm p-6 border-l-2 border-white/10">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:flashlight" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">FPP Horror Demo</h4>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Object pick-up & placement · Light switches · Door open/close · Area triggers for story progression</p>
+          </div>
+
+          <div class="fade-up stagger-3 glass-panel card-hover rounded-sm p-6 border-l-2 border-white/10">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:crosshair" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">Doom-Style Shooters</h4>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Rotoscoped billboard enemies · 2D sprites in 3D space · Zombat shooter remix with personal twist</p>
+          </div>
+
+          <div class="fade-up stagger-4 glass-panel card-hover rounded-sm p-6 border-l-2 border-[#E30613]">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:trophy" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">Prisma</h4>
+                <span class="text-[10px] tracking-widest uppercase text-[#E30613] bg-[#E30613]/10 px-2 py-0.5 rounded-sm">Brackeys Jam · #344 Overall · #146 Audio</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Phases of life narrative · Kratos-style voice acting (self) · Parkour gameplay · 7 planned stages → shipped 3 under jam time</p>
+          </div>
+
+          <div class="fade-up stagger-5 glass-panel card-hover rounded-sm p-6 border-l-2 border-white/10">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:person-standing" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">TPP Controller</h4>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">State-based animation management · Jump & double jump · Roll · Fly mode · FoV transitions</p>
+          </div>
+
+          <div class="fade-up stagger-6 glass-panel card-hover rounded-sm p-6 border-l-2 border-[#E30613]">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:trophy" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">UI Games (Brackeys Jam #1)</h4>
+                <span class="text-[10px] tracking-widest uppercase text-[#E30613] bg-[#E30613]/10 px-2 py-0.5 rounded-sm">#669 Overall · #70 Innovation</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Truth/Lie detective drag-drop game · AI procrastination game with 4th-wall-breaking tasks on actual desktop</p>
+          </div>
+
+          <div class="fade-up stagger-1 glass-panel card-hover rounded-sm p-6 border-l-2 border-white/10">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:square" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">2D Games</h4>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed"><strong class="text-gray-300">Omb</strong> — drag/shoot + probability door selection · <strong class="text-gray-300">In the End</strong> (Mini Jam #52) — top-down shooter, wave system, dash, Toxic theme · Soccer Stars puck remake, turn-based</p>
+          </div>
+
+          <div class="fade-up stagger-2 glass-panel card-hover rounded-sm p-6 border-l-2 border-[#E30613] md:col-span-2">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:monitor" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">Operating System in Godot</h4>
+                <span class="text-[10px] tracking-widest uppercase text-[#E30613] bg-[#E30613]/10 px-2 py-0.5 rounded-sm">Ongoing</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Building a simulated OS environment entirely inside Godot Engine — UI, window management, interactions.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Unreal Panel -->
+      <div class="journey-panel hidden" id="panel-unreal">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div class="fade-up glass-panel card-hover rounded-sm p-6 border-l-2 border-[#E30613]">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:flashlight" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">FPS Horror Template</h4>
+                <span class="text-[10px] tracking-widest uppercase text-gray-500 bg-white/5 px-2 py-0.5 rounded-sm">Blueprint</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Stamina system · Sprint · Flashlight mechanics</p>
+          </div>
+
+          <div class="fade-up stagger-1 glass-panel card-hover rounded-sm p-6 border-l-2 border-[#E30613]">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:door-open" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">3 Door Types</h4>
+                <span class="text-[10px] tracking-widest uppercase text-gray-500 bg-white/5 px-2 py-0.5 rounded-sm">Blueprint</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed"><strong class="text-gray-300">One-way</strong> — push/pull from correct sides · <strong class="text-gray-300">Two-way</strong> — both sides · <strong class="text-gray-300">Physics-based</strong> — grab handle, full sim</p>
+          </div>
+
+          <div class="fade-up stagger-2 glass-panel card-hover rounded-sm p-6 border-l-2 border-white/10 md:col-span-2">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:person-standing" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">Third Person Template</h4>
+                <span class="text-[10px] tracking-widest uppercase text-gray-500 bg-white/5 px-2 py-0.5 rounded-sm">Animation Blend Tree</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Lock-on system · Strafing · Walk→run→stop transitions · Sprinting · Crouching via Animation Blend Tree</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Unity Panel -->
+      <div class="journey-panel hidden" id="panel-unity">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div class="fade-up glass-panel card-hover rounded-sm p-6 border-l-2 border-[#E30613]">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:grid-2x2" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">Chess Template</h4>
+                <span class="text-[10px] tracking-widest uppercase text-gray-500 bg-white/5 px-2 py-0.5 rounded-sm">C#</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Turn-based · Move highlighting on piece selection · Learning C# foundations through this project</p>
+          </div>
+
+          <div class="fade-up stagger-1 glass-panel card-hover rounded-sm p-6 border-l-2 border-white/10">
+            <div class="flex items-start gap-3 mb-3">
+              <iconify-icon icon="lucide:camera" class="text-[#E30613] text-xl mt-0.5 shrink-0"></iconify-icon>
+              <div>
+                <h4 class="font-display text-base tracking-tight text-white mb-1">FPS Camera System</h4>
+                <span class="text-[10px] tracking-widest uppercase text-gray-500 bg-white/5 px-2 py-0.5 rounded-sm">C# · In Progress</span>
+              </div>
+            </div>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Camera rig foundation — ongoing as I build C# fluency</p>
+          </div>
+
+        </div>
+        <div class="mt-6 glass-panel rounded-sm p-5 border border-[#E30613]/20">
+          <p class="text-xs font-light text-gray-500 leading-relaxed"><iconify-icon icon="lucide:info" class="text-[#E30613] mr-2"></iconify-icon>Taking time to build C# fundamentals before jumping to complex 3D systems — same patient approach used to grow in Godot.</p>
+        </div>
+      </div>
+
+      <!-- Future Panel -->
+      <div class="journey-panel hidden" id="panel-future">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+          <div class="fade-up glass-panel card-hover rounded-sm p-6 border-t-2 border-[#E30613]">
+            <p class="text-[10px] tracking-widest uppercase text-[#E30613] mb-3">Game 1</p>
+            <h4 class="font-display text-lg tracking-tight text-white mb-2">The Godot Trilogy — Ch.1</h4>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Merging the FPP controller, GoW axe, portals, voxel destruction, and UI systems into one ambitious first title. All mechanics built modularly, ready to blend.</p>
+          </div>
+
+          <div class="fade-up stagger-1 glass-panel card-hover rounded-sm p-6 border-t-2 border-white/10">
+            <p class="text-[10px] tracking-widest uppercase text-gray-500 mb-3">Game 2 & 3</p>
+            <h4 class="font-display text-lg tracking-tight text-white mb-2">Unreal Engine</h4>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">Sequel titles targeting Unreal — deepening Blueprint & C++ skills now to be ready when the time comes.</p>
+          </div>
+
+          <div class="fade-up stagger-2 glass-panel card-hover rounded-sm p-6 border-t-2 border-white/10">
+            <p class="text-[10px] tracking-widest uppercase text-gray-500 mb-3">Also Ongoing</p>
+            <h4 class="font-display text-lg tracking-tight text-white mb-2">OS in Godot</h4>
+            <p class="text-xs font-light text-gray-400 leading-relaxed">A simulated operating system built entirely in Godot — just because it's interesting.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Journey tab switching
+    document.querySelectorAll('.journey-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.journey-tab').forEach(t => {
+          t.classList.remove('active-tab', 'bg-[#E30613]', 'text-white');
+          t.classList.add('border', 'border-white/10', 'text-gray-400');
+        });
+        tab.classList.add('active-tab', 'bg-[#E30613]', 'text-white');
+        tab.classList.remove('border', 'border-white/10', 'text-gray-400');
+        document.querySelectorAll('.journey-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById('panel-' + tab.dataset.engine).classList.remove('hidden');
+      });
+    });
+  </script>
+  
+  <!-- ===== WHAT PEOPLE SAY ===== -->
+  <section id="what-people-say" class="relative py-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+          <span class="inline-flex items-center gap-2">
+            <span class="w-8 h-px bg-[#E30613]"></span>
+            What People Say
+            <span class="w-8 h-px bg-[#E30613]"></span>
+          </span>
+        </p>
+        <h2 class="fade-up stagger-1 font-display text-3xl md:text-5xl font-500 tracking-tight leading-tight">
+          Voices from players
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="fade-up stagger-1 glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"I love your voice and commentary! I love the story (it kept me hooked to see what was next)! I love the glow effect / fog in the scene! I love the game feel (running, jumping, sliding etc.)!"</p>
+          <p class="text-xs text-gray-500">PsychoKineticStudios — Prisma (Brackeys Jam page)</p>
+        </div>
+
+        <div class="fade-up stagger-2 glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"The story was super intriguing, and the movement feels really good!"</p>
+          <p class="text-xs text-gray-500">PsychoKineticStudios — Prisma (Game page)</p>
+        </div>
+
+        <div class="fade-up stagger-3 glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"love the visuals, movement feels great to use, well done"</p>
+          <p class="text-xs text-gray-500">Max_514 — Prisma (Game page)</p>
+        </div>
+
+        <div class="fade-up stagger-4 glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"Very cool I like the style and voice. Movement also feels pretty good and there are a lot of movement options so good job on that too."</p>
+          <p class="text-xs text-gray-500">ZekaZeroTwo — Brackeys Jam</p>
+        </div>
+
+        <div class="fade-up stagger-5 glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"Control is very smooth and feels natural. Your game feels right — everything fits together."</p>
+          <p class="text-xs text-gray-500">Pfoursync — Brackeys Jam</p>
+        </div>
+
+        <div class="fade-up stagger-6 glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"It's a very cool game! I liked the controls, the atmosphere of the game is as strange as it should be! Very nice voice acting, that deep bass, amazing"</p>
+          <p class="text-xs text-gray-500">Boobjek — Brackeys Jam</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"For solo project - great, really. And the atmosphere is nice."</p>
+          <p class="text-xs text-gray-500">VishnyaBU — Brackeys Jam</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"Nicely made game. Well done! One thing I'd suggest — make it a bit more forgiving (coyote jump, larger coin hitboxes)."</p>
+          <p class="text-xs text-gray-500">Kabeja — Brackeys Jam</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"This was a simple but fun experience! I really liked the visuals."</p>
+          <p class="text-xs text-gray-500">amethyscent — Brackeys Jam</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"Congrats on making a game! very well done"</p>
+          <p class="text-xs text-gray-500">Hnix — Brackeys Jam</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"idk if it's only my problem but game is a little bit laggy. overall - pretty fun!"</p>
+          <p class="text-xs text-gray-500">TimBoSS123 — Prisma</p>
+        </div>
+
+        <div class="fade-up glass-panel rounded-sm p-6 border border-white/10 border-l-4 border-[#E30613]">
+          <p class="text-sm text-gray-200 mb-4">"THIS WAS A 10/10 GAME, I'M GIVING IT ALL FIVE STARS IN RATING"</p>
+          <p class="text-xs text-gray-500">barrett_krebs — TaskMaster.exe</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="relative py-24" style="background: #0a0a0a">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- Left: Info -->
+        <div>
+          <p class="fade-up text-xs font-medium tracking-[0.3em] uppercase text-[#E30613] mb-4">
+            <span class="inline-flex items-center gap-2">
+              <span class="w-8 h-px bg-[#E30613]"></span>
+              Get In Touch
+            </span>
+          </p>
+          <h2 class="fade-up stagger-1 font-display text-3xl md:text-5xl font-500 tracking-tight leading-tight mb-6">
+            LET'S BUILD<br>
+            <span class="gradient-text">SOMETHING</span>
+          </h2>
+          <p class="fade-up stagger-2 text-base font-light leading-relaxed text-gray-400 mb-10">
+            Whether you have a project in mind, a position to fill, or just want to talk game dev — I'm always up for a
+            conversation. Let's create something players will remember.
+          </p>
+
+          <div class="space-y-6">
+            <div class="fade-up stagger-3 flex items-center gap-4">
+              <div class="w-12 h-12 glass-panel rounded-sm flex items-center justify-center">
+                <iconify-icon icon="lucide:mail" class="text-[#E30613] text-lg"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-xs tracking-widest uppercase text-gray-500">Email</p>
+                <p class="text-sm font-light text-gray-300">Contact via form/email</p>
+              </div>
+            </div>
+
+            <div class="fade-up stagger-4 flex items-center gap-4">
+              <div class="w-12 h-12 glass-panel rounded-sm flex items-center justify-center">
+                <iconify-icon icon="lucide:map-pin" class="text-[#E30613] text-lg"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-xs tracking-widest uppercase text-gray-500">Location</p>
+                <p class="text-sm font-light text-gray-300">MIT Manipal, India</p>
+              </div>
+            </div>
+
+            <div class="fade-up stagger-5 flex items-center gap-4">
+              <div class="w-12 h-12 glass-panel rounded-sm flex items-center justify-center">
+                <iconify-icon icon="lucide:gamepad-2" class="text-[#E30613] text-lg"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-xs tracking-widest uppercase text-gray-500">Availability</p>
+                <p class="text-sm font-light text-gray-300">Open for internships & game dev roles</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Socials -->
+          <div class="fade-up stagger-6 flex gap-4 mt-10">
+            <a href="#"
+              class="w-10 h-10 border border-white/10 rounded-sm flex items-center justify-center text-gray-400 hover:bg-[#E30613] hover:text-white hover:border-[#E30613] transition-all duration-300">
+              <iconify-icon icon="lucide:github" class="text-lg"></iconify-icon>
+            </a>
+            <a href="#"
+              class="w-10 h-10 border border-white/10 rounded-sm flex items-center justify-center text-gray-400 hover:bg-[#E30613] hover:text-white hover:border-[#E30613] transition-all duration-300">
+              <iconify-icon icon="simple-icons:linkedin" class="text-lg"></iconify-icon>
+            </a>
+            <a href="https://a-m-a-r-a-m.itch.io/" target="_blank" rel="noopener"
+              class="w-10 h-10 border border-white/10 rounded-sm flex items-center justify-center text-gray-400 hover:bg-[#E30613] hover:text-white hover:border-[#E30613] transition-all duration-300">
+              <iconify-icon icon="simple-icons:itchdotio" class="text-lg"></iconify-icon>
+            </a>
+            <a href="https://bsky.app/profile/amaram-studio.bsky.social" target="_blank" rel="noopener"
+              class="w-10 h-10 border border-white/10 rounded-sm flex items-center justify-center text-gray-400 hover:bg-[#E30613] hover:text-white hover:border-[#E30613] transition-all duration-300">
+              <iconify-icon icon="simple-icons:bluesky" class="text-lg"></iconify-icon>
+            </a>
+            <a href="#"
+              class="w-10 h-10 border border-white/10 rounded-sm flex items-center justify-center text-gray-400 hover:bg-[#E30613] hover:text-white hover:border-[#E30613] transition-all duration-300">
+              <iconify-icon icon="simple-icons:x" class="text-lg"></iconify-icon>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="fade-up stagger-2">
+          <form id="contactForm" class="glass-panel rounded-sm p-8 space-y-6">
+            <div>
+              <label class="text-xs tracking-widest uppercase text-gray-500 mb-2 block">Name</label>
+              <input type="text" required placeholder="Your name"
+                class="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-sm font-light text-white placeholder-gray-600 focus:outline-none focus:border-[#E30613] transition-colors duration-300">
+            </div>
+            <div>
+              <label class="text-xs tracking-widest uppercase text-gray-500 mb-2 block">Email</label>
+              <input type="email" required placeholder="you@example.com"
+                class="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-sm font-light text-white placeholder-gray-600 focus:outline-none focus:border-[#E30613] transition-colors duration-300">
+            </div>
+            <div>
+              <label class="text-xs tracking-widest uppercase text-gray-500 mb-2 block">Project Type</label>
+              <select
+                class="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-sm font-light text-gray-400 focus:outline-none focus:border-[#E30613] transition-colors duration-300 appearance-none"
+                style="background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23999%22 stroke-width=%222%22><polyline points=%226 9 12 15 18 9%22/></svg>'); background-repeat: no-repeat; background-position: right 1rem center;">
+                <option value="" disabled selected>Select a type</option>
+                <option>Full-time Position</option>
+                <option>Freelance Project</option>
+                <option>Consulting</option>
+                <option>Game Jam Collab</option>
+                <option>Just Saying Hi</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs tracking-widest uppercase text-gray-500 mb-2 block">Message</label>
+              <textarea required rows="5" placeholder="Tell me about your project or opportunity..."
+                class="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-sm font-light text-white placeholder-gray-600 focus:outline-none focus:border-[#E30613] transition-colors duration-300 resize-none"></textarea>
+            </div>
+            <button type="submit"
+              class="w-full bg-[#E30613] hover:bg-red-700 text-white text-sm font-medium tracking-widest uppercase px-8 py-4 transition-colors duration-300 flex items-center justify-center gap-2">
+              <iconify-icon icon="lucide:send"></iconify-icon>
+              Send Message
+            </button>
+            <div id="formToast" class="hidden text-center text-sm font-light text-green-400 mt-2"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <span
+            class="w-8 h-8 bg-[#E30613] rounded flex items-center justify-center text-white text-sm font-bold">RS</span>
+          <span class="font-display text-lg tracking-wide">P.R.<span class="text-[#E30613]">SRIDHRUT</span></span>
+        </div>
+        <p class="text-xs text-gray-600 tracking-wide">&copy; 2026 Pisupati Rama Sridhrut. All rights reserved. Built
+          with passion and too much coffee.</p>
+        <div class="flex items-center gap-4">
+          <div class="flex gap-4">
+            <a href="#" class="text-gray-600 hover:text-[#E30613] transition-colors duration-300">
+              <iconify-icon icon="lucide:github" class="text-lg"></iconify-icon>
+            </a>
+            <a href="#" class="text-gray-600 hover:text-[#E30613] transition-colors duration-300">
+              <iconify-icon icon="simple-icons:linkedin" class="text-lg"></iconify-icon>
+            </a>
+            <a href="https://a-m-a-r-a-m.itch.io/" target="_blank" rel="noopener" class="text-gray-600 hover:text-[#E30613] transition-colors duration-300">
+              <iconify-icon icon="simple-icons:itchdotio" class="text-lg"></iconify-icon>
+            </a>
+            <a href="https://bsky.app/profile/amaram-studio.bsky.social" target="_blank" rel="noopener" class="text-gray-600 hover:text-[#E30613] transition-colors duration-300">
+              <iconify-icon icon="simple-icons:bluesky" class="text-lg"></iconify-icon>
+            </a>
+          </div>
+          <div class="ml-4">
+            <a href="#what-people-say" class="text-xs bg-transparent border border-white/10 px-3 py-2 rounded hover:bg-[#E30613] hover:text-white transition-colors">See testimonials</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Scroll Animations =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          // Skill bars
+          const bars = entry.target.querySelectorAll('.skill-bar-fill');
+          bars.forEach(bar => bar.classList.add('visible'));
+
+          // If the element itself is a skill bar
+          if (entry.target.classList.contains('skill-bar-fill')) {
+            entry.target.classList.add('visible');
+          }
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up, .fade-in, .slide-right, .skill-bar-fill').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ===== Navbar Scroll =====
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 100) {
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.5)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+      lastScroll = currentScroll;
+    });
+
+    // ===== Mobile Menu =====
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // ===== Project Filter =====
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-[#E30613]', 'text-white');
+          b.classList.add('border', 'border-white/10', 'text-gray-400');
+        });
+        btn.classList.add('active', 'bg-[#E30613]', 'text-white');
+        btn.classList.remove('border', 'border-white/10', 'text-gray-400');
+
+        const filter = btn.dataset.filter;
+
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = '';
+            card.style.animation = 'fadeUp 0.5s ease-out forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // ===== Contact Form =====
+    const contactForm = document.getElementById('contactForm');
+    const formToast = document.getElementById('formToast');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const btn = contactForm.querySelector('button[type="submit"]');
+      btn.innerHTML = '<iconify-icon icon="lucide:loader-2" class="animate-spin"></iconify-icon> Sending...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = '<iconify-icon icon="lucide:check"></iconify-icon> Sent!';
+        btn.classList.remove('bg-[#E30613]', 'hover:bg-red-700');
+        btn.classList.add('bg-green-600');
+
+        formToast.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+        formToast.classList.remove('hidden');
+
+        setTimeout(() => {
+          btn.innerHTML = '<iconify-icon icon="lucide:send"></iconify-icon> Send Message';
+          btn.classList.add('bg-[#E30613]', 'hover:bg-red-700');
+          btn.classList.remove('bg-green-600');
+          btn.disabled = false;
+          formToast.classList.add('hidden');
+          contactForm.reset();
+        }, 3000);
+      }, 1500);
+    });
+
+    // ===== Smooth scroll offset =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

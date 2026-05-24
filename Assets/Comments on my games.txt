@@ -1,0 +1,126 @@
+Here the comments:
+
+---
+
+## PRISMA
+
+**Game page comments**
+
+**PsychoKineticStudios** — *87 days ago* (+1)
+"The story was super intriguing, and the movement feels really good!"
+
+**Max_514** — *90 days ago* (+1)
+"love the visuals, movement feels great to use, well done"
+
+---
+
+**Brackeys Game Jam 2026.1 — Jam page comments**
+
+**ZekaZeroTwo** — *78 days ago* (+1)
+"Very cool I like the style and voice. Movement also feels pretty good and there are a lot of movement options so good job on that too. Overall nice entry :)"
+→ Dev: "Thank you very much for your kind words!!"
+
+**PixelToast_02** — *83 days ago* (+1)
+"Very good job."
+→ Dev: "Thanks!!"
+
+**Kabeja** — *84 days ago* (+1)
+"Nicely made game. Well done! 1 thing I would suggest is making it a bit more forgiving, just small adjustments like adding Coyote jump and increasing hitbox for coins. Apart from that great job!"
+→ Dev: "Thank you for playing my game and the feedback!! Yes you are right, I should have put some more Coyote jump delay, and the hitbox for the coin are too small. I will work on that."
+
+**amethyscent** — *84 days ago*
+"This was a simple but fun experience! I really liked the visuals. I did run into this error where jumping briefly pauses the game? It somehow fixed itself, but I have no idea what caused it."
+→ Dev: "Thank you for playing the game!! Yeah there is a bug where the pause menu pops up in the start, but it resumes automatically."
+
+**Pfoursync** — *86 days ago* (+1)
+"I love your game and I'll practice more to get past the first set of stairs. For parkour, which I love, but am not very good at, I always wish for an easy/explorer mode where you can jump a tad higher and further, or if you fall, you reset to your last position instead of reloading the level. Control is very smooth and feels natural. Your game feels right — everything fits together. Congratulations!"
+→ Dev: "Thank you for playing my game!! I would encourage you to play a little more as the third stage has more freedom of movement."
+
+**Hnix** — *86 days ago* (+1)
+"Congrats on making a game! very well done"
+→ Dev: "Thank You!!"
+
+**VishnyaBU** — *86 days ago* (+1)
+"For solo project - great, really. And the atmosphere is nice."
+→ Dev: "Thank You for your kind words!"
+
+**PsychoKineticStudios** — *87 days ago* (+1)
+"Something I love: I love your voice and commentary! I love the story (it kept me hooked to see what was next)! I love the glow effect / fog in the scene! I love the game feel (running, jumping, sliding etc.)! Things that frustrated me — Something I wish your game had: Subtitles for your commentary. I think a tilt to the head while wall running would add SO much! Bugs: 1. In the first level, when I left click or press space a menu pops up but then goes away immediately. 2. 'Safety is not a place' plays twice. Overall: I loved your game! Keep up the great work!!!"
+→ Dev: "Thank You for your kind words and your feedback means a lot! I did the voice recording really late, on Sunday, so I was not able to add subtitles on time. And yes, subtitles would make a lot of difference. Many have mentioned the pause menu glitch at the start. I will fix this in the next build, and more stages, as this is not the end of the story."
+
+**Boobjek** — *87 days ago* (+1)
+"It's a very cool game! I liked the controls, the atmosphere of the game is as strange as it should be! Very nice voice acting, that deep bass, amazing"
+→ Dev: "Thank you for your kind words!!"
+
+**CHolt** — *87 days ago*
+"Nice job! For some reason if I click or jump it brings up a menu for a sec then disappears."
+→ Dev asked for clarification; CHolt replied it happens on startup with the high quality build.
+
+**chromakid** — *90 days ago*
+"that looks so good, but the controller is broken :( I mean it moves in a very strange way when I look around"
+→ Dev clarified it's likely the Alt free-look mechanic.
+
+**torlai** — *90 days ago* (+1)
+"That's a really strange place. At the beginning I felt like retired Sonic. Platforming was a bit too much for me. Some checkpoints would be nice. Good job on atmosphere though, controls are pretty good too, good work!"
+→ Dev: "Yes the checkpoints would have made the experience better. But there was very little time. Fun fact: more than half the time was taken to make the fps player controller."
+
+**Phanx4lux** — *90 days ago* (+1)
+"I really liked your game, especially the atmosphere and sounds. Sometimes I felt like it didn't respond as I expected (double jump). I think a safe space where you learn the movement would be a good addition. Otherwise great work, felt very 'strange' :)"
+→ Dev: "Thank you! Though the second stage has a part where you can jump around and check."
+
+**31math62** — *90 days ago*
+"I wish I could play, but my laptop keeps saying this is a virus even after I said run anyway."
+→ Dev: "Thanks for trying. I will be adding a web build."
+
+**yevgenko** — *90 days ago* (+1)
+"nice game, very atmospheric with good sounds and visual"
+→ Dev: "Thank you!! for your feedback!!"
+
+**Nakuya** — *90 days ago* (+1)
+"Stuck on third level but this game is very cool! I really like the ambient. I think jump section is a bit tricky. Otherwise good game!"
+→ Dev explained the wall climb mechanic, then noted and fixed a spawn bug in stage 3.
+
+**Ngong2000** — *90 days ago* (+1)
+"I'm stuck at the third level, a bit jittery when wall running and jumping and falling, nice visuals for fitting the theme though!"
+→ Dev: "Thank you for playing till the third stage! Actually the game runs better on a dedicated gpu."
+
+**Massassen** — *90 days ago*
+"the screenshot is a bit annoying i thought it was the html version"
+→ Dev: "Yeah, hahaha"
+
+**TeamFenryn** — *91 days ago* (+1)
+"Pretty fun, well done!"
+
+**TimBoSS123** — *91 days ago*
+"idk if it's only my problem but game is a little bit laggy. overall - pretty fun!"
+→ Dev: "I think I went overboard with the graphics quality. It runs good on any dedicated GPU."
+
+---
+
+## TASKMASTER.EXE
+
+**Game page comments**
+
+**barrett_krebs** — *1 year ago*
+"Well shit I can't play it, I use apple. So.... THIS WAS A 10/10 GAME, I'M GIVING IT ALL FIVE STARS IN RATING"
+→ Dev: "Thank you for the rating and feedback 😁. Yeah, in the future I might do a multi-platform release. Stay tuned for that."
+
+**Hazzy** — *1 year ago* (+1)
+"neat idea but the game feels unfinished. the only scare in the game is it re-opening itself and when it does there's nothing to do"
+→ Dev: "Thanks for the feedback. The game is still in progress. I had like you play it once more now, as I have added a little more detail and of course further polishing is needed. It is hard to manage college and game jam at same time 😁"
+
+---
+
+## IN THE END — No comments on game page or jam page.
+
+---
+
+## OMB — No comments on game page.
+
+---
+
+## TRUTH OR LIE — No comments on game page.
+
+---
+
+## IT GROWS — No comments on game page.

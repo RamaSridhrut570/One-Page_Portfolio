@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pisupati Rama Sridhrut – Portfolio (Single File)</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+/* Inlined style.css */
+:root {
+  --color-bg:         #eef2ff;
+  --color-bg-alt:     #e2e8ff;
+  --color-surface:    #ffffff;
+  --color-primary:    #1e3a8a;
+  --color-primary-dk: #172d6a;
+  --color-text:       #10224d;
+  --color-text-dim:   #4b5f8a;
+  --color-border:     #b9c8ef;
+  --color-white:      #10224d;
+
+  --ff-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ff-mono: 'Fira Code', 'Courier New', monospace;
+
+  --radius: 8px;
+  --transition: 0.3s ease;
+  --max-w: 1100px;
+  --nav-h: 70px;
+}
+
+/* Dark theme */
+body.dark-theme {
+  --color-bg:         #070f24;
+  --color-bg-alt:     #0b1633;
+  --color-surface:    #102046;
+  --color-primary:    #3f62c9;
+  --color-primary-dk: #2f4eab;
+  --color-text:       #d6e1ff;
+  --color-text-dim:   #9eb0de;
+  --color-border:     #233b73;
+  --color-white:      #ffffff;
+}
+
+/* =================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+body { font-family: var(--ff-sans); background-color: var(--color-bg); color: var(--color-text); line-height: 1.7; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; transition: color var(--transition); }
+ul { list-style: none; }
+.container { max-width: var(--max-w); margin-inline: auto; padding-inline: 1.5rem; }
+.section { padding-block: 5rem; }
+.section-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: var(--color-white); margin-bottom: 2.5rem; text-align: center; position: relative; }
+.section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--color-primary); margin: 0.6rem auto 0; border-radius: 2px; }
+.btn { display: inline-block; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition); border: 2px solid transparent; }
+.btn-primary { background: var(--color-primary); color: #ffffff; border-color: var(--color-primary); }
+.btn-primary:hover { background: var(--color-primary-dk); border-color: var(--color-primary-dk); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+.btn-outline:hover { background: var(--color-primary); color: #ffffff; transform: translateY(-2px); }
+.navbar { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 1000; background: transparent; transition: background var(--transition), box-shadow var(--transition); }
+.navbar.scrolled { background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--color-border); }
+.nav-container { max-width: var(--max-w); margin-inline: auto; padding-inline: 1.5rem; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 1.4rem; font-weight: 800; color: var(--color-primary); letter-spacing: 0.05em; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--color-text-dim); letter-spacing: 0.04em; }
+.nav-links a:hover, .nav-links a.active { color: var(--color-primary); }
+.theme-toggle { background: transparent; border: none; color: var(--color-text-dim); font-size: 1.1rem; cursor: pointer; padding: 8px; border-radius: var(--radius); transition: color var(--transition), background var(--transition); display: flex; align-items: center; justify-content: center; }
+.theme-toggle:hover { color: var(--color-primary); background: rgba(37, 99, 235, 0.1); }
+.theme-toggle i { transition: transform var(--transition); }
+.theme-toggle:hover i { transform: rotate(20deg); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--color-text); border-radius: 2px; transition: transform var(--transition), opacity var(--transition); }
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.hero { min-height: 100vh; display: flex; align-items: center; padding-top: var(--nav-h); position: relative; overflow: hidden; }
+.hero-content { max-width: var(--max-w); margin-inline: auto; padding-inline: 1.5rem; position: relative; z-index: 1; }
+.hero-greeting { font-size: 1.1rem; color: var(--color-primary); font-weight: 500; margin-bottom: 0.25rem; }
+.hero-name { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: var(--color-white); line-height: 1.1; margin-bottom: 0.4rem; }
+.hero-role { font-size: clamp(1.4rem, 4vw, 2.4rem); color: var(--color-text-dim); font-weight: 500; margin-bottom: 1rem; }
+.hero-tagline { max-width: 480px; color: var(--color-text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-graphic { position: absolute; top: 0; right: 0; width: 50%; height: 100%; pointer-events: none; }
+.circle { position: absolute; border-radius: 50%; opacity: 0.08; background: var(--color-primary); }
+.circle-1 { width: 500px; height: 500px; top: 5%;  right: -10%; }
+.circle-2 { width: 300px; height: 300px; top: 30%; right: 20%; }
+.circle-3 { width: 180px; height: 180px; top: 60%; right: 5%;  }
+.about { background: var(--color-bg-alt); }
+.about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; }
+.avatar-placeholder { width: 220px; height: 220px; border-radius: 50%; background: var(--color-surface); border: 3px solid var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--color-primary); margin-inline: auto; }
+.about-text p { color: var(--color-text-dim); margin-bottom: 1rem; }
+.about-text .btn { margin-top: 0.5rem; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1.25rem; }
+.skill-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem 1rem; display: flex; flex-direction: column; align-items: center; text-align: center; transition: border-color var(--transition), transform var(--transition); }
+.skill-card:hover { border-color: var(--color-primary); transform: translateY(-4px); }
+.skill-icon { font-size: 2rem; color: var(--color-primary); margin-bottom: 0.5rem; }
+.skill-card span { font-size: 0.85rem; color: var(--color-text-dim); }
+.projects { background: var(--color-bg-alt); }
+.featured-projects { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3rem; }
+.featured-project-card { background: rgba(79, 142, 247, 0.08); border: 1px solid rgba(79, 142, 247, 0.2); border-radius: var(--radius); padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; backdrop-filter: blur(10px); transition: all var(--transition); min-height: 600px; }
+.featured-project-card:hover { background: rgba(79, 142, 247, 0.12); border-color: rgba(79, 142, 247, 0.4); transform: translateY(-3px); }
+.featured-video-container { width: 100%; height: 350px; border-radius: calc(var(--radius) - 4px); overflow: hidden; background: rgba(0, 0, 0, 0.3); }
+.featured-video { width: 100%; height: 100%; object-fit: cover; }
+.featured-project-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.featured-project-header h3 { font-size: 1.5rem; color: var(--color-white); margin: 0; }
+.featured-project-card > p { font-size: 1rem; color: var(--color-text-dim); margin: 0; }
+.subsection-title { font-size: 1.5rem; color: var(--color-white); margin-top: 2rem; margin-bottom: 1.5rem; font-weight: 600; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.project-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; transition: border-color var(--transition), transform var(--transition); }
+.project-card:hover { border-color: var(--color-primary); transform: translateY(-5px); }
+.project-header { display: flex; justify-content: space-between; align-items: center; }
+.project-header > i { font-size: 1.8rem; color: var(--color-primary); }
+.project-links { display: flex; gap: 1rem; }
+.project-links a { font-size: 1.1rem; color: var(--color-text-dim); }
+.project-links a:hover { color: var(--color-primary); }
+.project-card h3 { font-size: 1.1rem; color: var(--color-white); }
+.project-card p { font-size: 0.9rem; color: var(--color-text-dim); flex: 1; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
+.project-tags li { font-size: 0.75rem; font-family: var(--ff-mono); color: var(--color-primary); background: rgba(79, 142, 247, 0.1); padding: 0.2rem 0.6rem; border-radius: 4px; }
+.contact-subtitle { text-align: center; color: var(--color-text-dim); max-width: 500px; margin-inline: auto; margin-bottom: 2.5rem; }
+.contact-form { max-width: 650px; margin-inline: auto; display: flex; flex-direction: column; gap: 1.25rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.85rem; color: var(--color-text-dim); font-weight: 500; }
+.form-group input, .form-group textarea { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); color: var(--color-text); font-family: var(--ff-sans); font-size: 0.95rem; padding: 0.7rem 1rem; outline: none; transition: border-color var(--transition); resize: vertical; }
+.form-group input:focus, .form-group textarea:focus { border-color: var(--color-primary); }
+.form-group input.error, .form-group textarea.error { border-color: #e05c5c; }
+.form-status { font-size: 0.9rem; margin-top: -0.25rem; min-height: 1.2em; }
+.form-status.success { color: #4caf82; }
+.form-status.error   { color: #e05c5c; }
+.social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 3rem; }
+.social-links a { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--color-text-dim); transition: border-color var(--transition), color var(--transition), transform var(--transition); }
+.social-links a:hover { border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-3px); }
+.footer { background: var(--color-bg-alt); border-top: 1px solid var(--color-border); text-align: center; padding: 1.75rem 1.5rem; font-size: 0.88rem; color: var(--color-text-dim); }
+.footer strong { color: var(--color-primary); }
+.footer-copy { margin-top: 0.3rem; font-size: 0.8rem; }
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav-links { position: fixed; top: var(--nav-h); left: 0; right: 0; background: rgba(10, 15, 30, 0.97); flex-direction: column; align-items: center; gap: 0; padding-block: 1rem; transform: translateY(-110%); transition: transform var(--transition); }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links li { width: 100%; text-align: center; }
+  .nav-links a { display: block; padding: 0.8rem 1rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .hero-cta { flex-direction: column; }
+  .btn { text-align: center; }
+}
+</style>
+</head>
+<body>
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="#hero">RS</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-name">Pisupati Rama Sridhrut</h1>
+      <h2 class="hero-role">Electrical Engineer | Game Developer | Robotics Engineer</h2>
+      <p class="hero-tagline">I build fun, memorable and enjoyable games.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects">View My Work</a>
+        <a class="btn btn-outline" href="#contact">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-graphic" aria-hidden="true">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section about" id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-image">
+          <div class="avatar-placeholder" aria-label="Profile photo placeholder">
+            <i class="fa-solid fa-user"></i>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>
+            Hello! I'm <strong>Pisupati Rama Sridhrut</strong>, a passionate game developer with a love for crafting elegant and very strong narrative games. I enjoy working across all the aspects of game development, from designing engaging and innovative gameplay mechanics to creating soulful music.
+          </p>
+          <p>
+            When I'm not coding, you'll find me exploring new technologies, creating art and stories, and producing music.
+          </p>
+          <a class="btn btn-primary" href="#contact">Let's Connect</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><i class="fa-brands fa-python skill-icon" aria-hidden="true"></i><span>Python</span></div>
+        <div class="skill-card"><i class="fa-solid fa-gamepad skill-icon" aria-hidden="true"></i><span>Godot Game Engine</span></div>
+        <div class="skill-card"><i class="fa-solid fa-cube skill-icon" aria-hidden="true"></i><span>Unity Engine</span></div>
+        <div class="skill-card"><i class="fa-solid fa-shield-halved skill-icon" aria-hidden="true"></i><span>Unreal Engine</span></div>
+        <div class="skill-card"><i class="fa-solid fa-music skill-icon" aria-hidden="true"></i><span>FL studio</span></div>
+        <div class="skill-card"><i class="fa-solid fa-chart-line skill-icon" aria-hidden="true"></i><span>MATLAB/Simulink</span></div>
+        <div class="skill-card"><i class="fa-brands fa-github skill-icon" aria-hidden="true"></i><span>Github</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <!-- Featured: Jam games with itch links -->
+      <div class="featured-projects">
+        <article class="featured-project-card">
+          <div class="featured-video-container" style="display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size:5rem;color:rgba(79,142,247,0.3);"></i>
+          </div>
+          <div class="featured-project-header">
+            <h3>Prisma</h3>
+            <div class="project-links">
+              <a href="https://a-m-a-r-a-m.itch.io/prisma" target="_blank" rel="noopener" aria-label="Play on itch.io"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <p>Brackey's Game Jam — 3D first-person parkour narrative through the stages of human life. Kratos-style voice acting (self-performed). Ranked <strong>344th overall</strong>, <strong>146th in Audio</strong>.</p>
+          <ul class="project-tags"><li>Godot</li><li>GDScript</li><li>Narrative</li><li>Voice Acting</li><li>Game Jam</li></ul>
+        </article>
+
+        <article class="featured-project-card">
+          <div class="featured-video-container" style="display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+            <i class="fa-solid fa-desktop" style="font-size:5rem;color:rgba(79,142,247,0.3);"></i>
+          </div>
+          <div class="featured-project-header">
+            <h3>TaskMaster.exe</h3>
+            <div class="project-links">
+              <a href="https://a-m-a-r-a-m.itch.io/taskmasterexe" target="_blank" rel="noopener" aria-label="Play on itch.io"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <p>Brackey's Game Jam — 4th-wall-breaking psychological simulation where an unpredictable AI assigns tasks on the actual desktop. Ranked <strong>70th in Innovation</strong>, 669th overall.</p>
+          <ul class="project-tags"><li>Godot</li><li>GDScript</li><li>4th Wall</li><li>Innovation</li><li>Game Jam</li></ul>
+        </article>
+
+        <article class="featured-project-card">
+          <div class="featured-video-container" style="display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);">
+            <i class="fa-solid fa-crosshairs" style="font-size:5rem;color:rgba(79,142,247,0.3);"></i>
+          </div>
+          <div class="featured-project-header">
+            <h3>In the End</h3>
+            <div class="project-links">
+              <a href="https://a-m-a-r-a-m.itch.io/in-the-end" target="_blank" rel="noopener" aria-label="Play on itch.io"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <p>Mini Jam — ranked <strong>#52 overall</strong>. Top-down shooter: a lone cell battles endless toxic wave invaders inside a dying body. Wave system, dash mechanic, enemy AI, narrative.</p>
+          <ul class="project-tags"><li>Godot</li><li>2D</li><li>Shooter</li><li>Game Jam</li></ul>
+        </article>
+      </div>
+
+      <h3 class="subsection-title">Other Projects</h3>
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-axe" aria-hidden="true"></i>
+            <div class="project-links">
+              <a href="https://a-m-a-r-a-m.itch.io/" target="_blank" rel="noopener" aria-label="itch.io profile"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Garnok: The Realm of Banished</h3>
+          <p>Ongoing Trilogy Part 1 (Godot). God of War axe mechanic, Portal-style portals, time slowdown, wall climb/slide/run, double jump, anchor checkpoint system. Active development.</p>
+          <ul class="project-tags"><li>Godot</li><li>FPS</li><li>Trilogy Pt.1</li><li>Ongoing</li></ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-bomb" aria-hidden="true"></i>
+            <div class="project-links">
+              <a href="https://a-m-a-r-a-m.itch.io/omb" target="_blank" rel="noopener" aria-label="Play on itch.io"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Omb</h3>
+          <p>Drag-and-shoot 2D puzzle — open doors to find treats or bombs. Probability-based outcomes, risk/reward decision loop. Playable in browser.</p>
+          <ul class="project-tags"><li>Godot</li><li>2D</li><li>Puzzle</li></ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+            <div class="project-links">
+              <a href="https://a-m-a-r-a-m.itch.io/truth-or-lie" target="_blank" rel="noopener" aria-label="Play on itch.io"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Truth or Lie</h3>
+          <p>Detective drag-and-drop interactive fiction — sort evidence as truth or lie. The line between justice and guilt has never been thinner. Playable in browser.</p>
+          <ul class="project-tags"><li>Godot</li><li>Narrative</li><li>UI</li></ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-snowflake" aria-hidden="true"></i>
+            <div class="project-links">
+              <a href="https://a-m-a-r-a-m.itch.io/it-grows" target="_blank" rel="noopener" aria-label="Play on itch.io"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>IT GROWS (Demo)</h3>
+          <p>Tense survival demo — survive the cold, escape the unknown. Atmospheric horror with environmental threat mechanics.</p>
+          <ul class="project-tags"><li>Godot</li><li>Survival</li><li>Horror</li></ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-flashlight" aria-hidden="true"></i>
+            <div class="project-links"></div>
+          </div>
+          <h3>FPS Horror Template (Unreal)</h3>
+          <p>Unreal Engine Blueprint template — stamina & sprint system, flashlight, and three physics-accurate door types: one-way, two-way, and physics-based handle door.</p>
+          <ul class="project-tags"><li>Unreal Engine</li><li>Blueprint</li><li>Horror</li></ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i>
+            <div class="project-links"></div>
+          </div>
+          <h3>Third Person Template (Unreal)</h3>
+          <p>Lock-on system with strafing, Animation Blend Tree for walk→sprint→stop transitions, sprinting, and crouching. Built in Unreal Engine with Blueprint.</p>
+          <ul class="project-tags"><li>Unreal Engine</li><li>Blueprint</li><li>Animation</li></ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-subtitle">Have a project in mind or just want to say hello? My inbox is always open.</p>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Your message…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
+      </form>
+      <div class="social-links">
+        <a href="https://github.com/RamaSridhrut570" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://a-m-a-r-a-m.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="itch.io"><i class="fa-brands fa-itch-io"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Designed &amp; Built by <strong>Rama Sridhrut</strong></p>
+    <p class="footer-copy">&copy; <span id="year"></span> All rights reserved.</p>
+  </footer>
+
+  <script>
+/* Inlined script.js */
+// Theme Toggle: Dark/Light mode
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+if (initialTheme === 'dark') {
+  html.setAttribute('data-theme', 'dark');
+  document.body.classList.add('dark-theme');
+  themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+} else {
+  html.setAttribute('data-theme', 'light');
+  document.body.classList.remove('dark-theme');
+  themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+}
+themeToggle.addEventListener('click', () => {
+  const currentTheme = html.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', newTheme);
+  document.body.classList.toggle('dark-theme');
+  localStorage.setItem('theme', newTheme);
+  if (newTheme === 'dark') {
+    themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  } else {
+    themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+  }
+});
+
+// Navbar: scroll effect + active-link highlighting
+const navbar   = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id]');
+function onScroll() {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+  const scrollMid = window.scrollY + window.innerHeight / 2;
+  sections.forEach((section) => {
+    const top    = section.offsetTop;
+    const bottom = top + section.offsetHeight;
+    if (scrollMid >= top && scrollMid < bottom) {
+      navLinks.forEach((link) => link.classList.remove('active'));
+      const active = document.querySelector(`.nav-links a[href="#${section.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Mobile menu toggle
+const navToggle = document.getElementById('navToggle');
+const navMenu   = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  const isOpen = navMenu.classList.toggle('open');
+  navToggle.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', isOpen);
+});
+navMenu.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// Contact form — client-side validation + feedback
+const contactForm = document.getElementById('contactForm');
+const formStatus  = document.getElementById('formStatus');
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nameEl    = document.getElementById('name');
+  const emailEl   = document.getElementById('email');
+  const messageEl = document.getElementById('message');
+  [nameEl, emailEl, messageEl].forEach((el) => el.classList.remove('error'));
+  formStatus.textContent = '';
+  formStatus.className   = 'form-status';
+  let valid = true;
+  if (!nameEl.value.trim()) { nameEl.classList.add('error'); valid = false; }
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(emailEl.value.trim())) { emailEl.classList.add('error'); valid = false; }
+  if (!messageEl.value.trim()) { messageEl.classList.add('error'); valid = false; }
+  if (!valid) { formStatus.textContent = 'Please fill in all fields correctly.'; formStatus.classList.add('error'); return; }
+  formStatus.textContent = "Thanks for reaching out! I'll get back to you soon.";
+  formStatus.classList.add('success');
+  contactForm.reset();
+});
+
+// Footer year
+const yearEl = document.getElementById('year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
